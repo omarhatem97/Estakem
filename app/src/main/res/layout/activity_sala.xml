@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/stars"
+    tools:context=".salah">
+
+    <Button
+        android:id="@+id/start_but"
+        android:layout_width="73dp"
+        android:layout_height="41dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/colorPrimary"
+        android:text="ابدأ"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/numofdays"
+        app:layout_constraintEnd_toStartOf="@+id/numofdays"
+        app:layout_constraintHorizontal_bias="0.759"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/numofdays"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/numofdays"
+        android:layout_width="50dp"
+        android:backgroundTint="@color/colorAccent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="24dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintEnd_toStartOf="@+id/name_text"
+        app:layout_constraintTop_toBottomOf="@+id/aya_" />
+
+    <TextView
+        android:id="@+id/name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="ادخل عدد الأيام"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aya_" />
+
+    <TextView
+        android:id="@+id/aya_"
+        android:layout_width="374dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="@font/lalezar_fegular"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:text="وَالَّذِينَ جَاهَدُوا فِينَا لَنَهْدِيَنَّهُمْ سُبُلَنَا وَإِنَّ اللَّهَ لَمَعَ الْمُحْسِنِينَ"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/name_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.567"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="#eeffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/start_but"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/definition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:text='السنن الرواتب تعريف السنن الرواتب هي السنن التي داوم النبيُّ عليه الصلاة والسلام عليها، ودلّ على ذلك إخبارُه بها، أو فعلُها، منها سنةُ الظهر، وسنةُ المغرب، والعشاء، وأخيراً الفجر، بالإضافة إلى سنة الجمعة، وسُمِّيت بالرواتب لمواظبة النبي عليه الصلاة والسلام عليها، وهي سنة مؤكدة، كصلاة الوتر، وصلاة الضحى، ويبلغ عدد هذه السنن اثنتي عشرة ركعة، وهي  أربعُ ركعات قبل الظهر بتسليمتين، واثنتان بعد الظهر. ركعتان من بعد صلاة المغرب. ركعتان بعد صلاة العشاء. ركعتان من قبل صلاة الفجر قال رسول الله  . "ركعتا الفجر خير من الدنيا وما فيها"  وتقول عائشة رضى الله عنها: «لم يكنِ النبيُّ صلَّى اللهُ عليه وسلَّم، على شيءٍ من النوافِلِ، أشدَّ منه تعاهُدًا على ركعتَيِ الفجرِ  عن عائشة رضي الله عنها قالت : " كان النبي    يصلي في بيتي قبلَ الظهرِ أربعًا . ثم يخرج فيصلي بالناسِ . ثم يدخل فيصلي ركعتَين . وكان يصلي بالناس المغربَ . ثم يدخل فيصلي ركعتَين . ويصلي بالناس العشاءَ . ويدخل بيتي فيصلي ركعتَين"'
+            android:textColor="#680E0E"
+            android:textColorHighlight="@android:color/background_dark"
+            android:textSize="18sp" />
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/stars"
+    tools:context=".review">
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="373dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/mada_bold"
+        android:text="اسم العبادة"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.421"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="205dp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:progressBarStyleHorizontal"
+        android:layout_width="120dp"
+        android:layout_height="124dp"
+        android:layout_marginTop="20dp"
+        android:progress="80"
+        android:progressDrawable="@drawable/style_progressbar"
+
+        app:layout_constraintBottom_toTopOf="@+id/textView8"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.423"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name"
+        app:layout_constraintVertical_bias="0.029" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="138dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif"
+        android:text="لقد أنجزت"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
+
+    <TextView
+        android:id="@+id/percent"
+        android:layout_width="54dp"
+        android:layout_height="40dp"
+        android:text="80%"
+        android:textAlignment="center"
+        android:textColor="#00E676"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/progressBar"
+        app:layout_constraintEnd_toEndOf="@+id/progressBar"
+        app:layout_constraintHorizontal_bias="0.53"
+        app:layout_constraintStart_toStartOf="@+id/progressBar"
+        app:layout_constraintTop_toTopOf="@+id/progressBar"
+        app:layout_constraintVertical_bias="0.583" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="91dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="4dp"
+        android:fontFamily="@font/mada_medium"
+        android:text="التقييم"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+        app:layout_constraintEnd_toStartOf="@+id/imageView6"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/imageView6"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myvalue"
+        app:srcCompat="@drawable/cup" />
+
+    <TextView
+        android:id="@+id/myvalue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="4dp"
+        android:padding="8dp"
+        android:text="TextView"
+        android:textColor="#00E676"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/total"
+        app:layout_constraintEnd_toStartOf="@+id/total"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/total" />
+
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:padding="8dp"
+        android:text="TextView"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/myvalue"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/tkyem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        android:textColor="#FFEB3B"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tkyem"
+        app:layout_constraintVertical_bias="0.053">
+
+        <TextView
+            android:id="@+id/review"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="#77000000"
+            android:padding="8dp"
+            android:text="جزاكم الله خيرا على جهودكم، وربنا يجعله في ميزان حسناتكم بإذن الله: أبحث عن عمل في مجال برمجة تطبيقات الأندرويد، وكثير منهم يعتمد على طريقة الربح من الإعلانات، بمعني أننا سنرفع تطبيقات على جوجل بلاي سوق الأندرويد المعروف، سواء تطبيقات إسلامية أو تطبيقات في مجالات أخرى، وسنضع كودا في البرنامج يسمح لشركات الإعلانات، وكلها شركات غربية... بوضع إعلاناتهم داخل تطبيقنا وبالتالي أي شخص يحمل التطبيق ويركبه على جهازه سيرى الإعلانات، وتوجد فلاتر نضعها بخصوص أننا نقول لا نريد أي إعلانات للخمور أو للجنس وهكذا، ولكن لا يوجد ضمان كامل بنسبة 100 في المائة لتطبيق هذه الفلاتر، وعلى حد علمي فإن غالبية الإعلانات لا تتعارض مع الفلاتر والقيود التي تطلبها، وهذه الشركات غربية وليس عندها حلال أو حرام، فمن الممكن ظهور إعلان يحتوي على صورة امرأة متبرجة، مثل هذا الإعلان"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tkyem"
+            app:layout_constraintVertical_bias="0.13999999" />
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>
