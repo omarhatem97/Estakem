@@ -14,10 +14,10 @@
         android:theme="@style/AppTheme">
         <activity android:name=".engazat"></activity>
         <activity android:name=".ershadat" />
-        <activity android:name=".tarkzanb" />
+        <activity android:name=".tarkzanb"  android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".review" />
         <activity android:name=".sonan_mahgora" />
-        <activity android:name=".sala" />
+        <activity android:name=".sala"  android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

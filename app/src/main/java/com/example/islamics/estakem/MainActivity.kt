@@ -467,6 +467,8 @@ class MainActivity : AppCompatActivity() {
             builder.show()
 
 
+
+
             /*myshared = getSharedPreferences("shared" , 0)
             var editor: SharedPreferences.Editor = myshared!!.edit()
             MyApplication.globalvar?.remove(mycards[viewHolder.adapterPosition].name)
@@ -503,6 +505,11 @@ class MainActivity : AppCompatActivity() {
         var databack = getSharedPreferences("shared", 0)
         var databack1 = getSharedPreferences("keyshared" ,0)
 
+        var last_num = (myshared_engaz.all.size + 1).toString()  // store the keys of engazat as 1,2,3,4 .....
+
+
+
+
         var v = databack.getString(card.name , "toz")
 
         val strs = v?.split(",")?.toTypedArray()
@@ -512,14 +519,15 @@ class MainActivity : AppCompatActivity() {
 
         Log.d("numcoinsandrating",v.toString())
 
-        editor_engaz.putString(card.name, card.name + ","  + strs?.get(2).toString() + "," + diff+ '/'+ strs?.get(5).toString()
+        //hena 8yart
+        editor_engaz.putString(last_num, card.name + ","  + strs?.get(2).toString() + "," + diff+ '/'+ strs?.get(5).toString()
                                 + "," + strs?.get(3).toString() )
         editor_engaz.commit()
 
         var temp = getdataback_slicedform("keyshared_engaz")
         if (temp == null)
-            temp = card.name + ","
-        else temp = temp + card.name + ","
+            temp = last_num + ","
+        else temp = temp + last_num + ","
         editor1_engaz.putString("keys", temp)
         editor1_engaz.commit()
 
