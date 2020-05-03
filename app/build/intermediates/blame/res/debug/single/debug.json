@@ -1408,6 +1408,10 @@
         "source": "C:\\Users\\Omar Hatem\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\1a4721fc7f7b3b619b7eaf79ea4c4526\\res\\drawable-xxhdpi-v4\\abc_switch_track_mtrl_alpha.9.png"
     },
     {
+        "merged": "C:\\Users\\Omar Hatem\\Desktop\\estakem_copy\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_mychallenges.xml.flat",
+        "source": "C:\\Users\\Omar Hatem\\Desktop\\estakem_copy\\app\\src\\main\\res\\layout\\activity_mychallenges.xml"
+    },
+    {
         "merged": "C:\\Users\\Omar Hatem\\Desktop\\estakem_copy\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_btn_radio_to_on_mtrl_015.png.flat",
         "source": "C:\\Users\\Omar Hatem\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\1a4721fc7f7b3b619b7eaf79ea4c4526\\res\\drawable-hdpi-v4\\abc_btn_radio_to_on_mtrl_015.png"
     },

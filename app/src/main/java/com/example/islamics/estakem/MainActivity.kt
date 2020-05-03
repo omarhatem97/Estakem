@@ -188,6 +188,12 @@ class MainActivity : AppCompatActivity() {
         var editor: SharedPreferences.Editor = myshared!!.edit()
 
 
+        tahadyate_but.setOnClickListener {
+            val intent = Intent(this ,mychallenges::class.java)
+            startActivity(intent)
+        }
+
+
         deletebut.setOnClickListener {
 
             val builder = AlertDialog.Builder(this)
@@ -200,7 +206,6 @@ class MainActivity : AppCompatActivity() {
 //            mychallengesText.visibility = View.INVISIBLE
 //            tanshet.visibility = View.INVISIBLE
 //            deletebut.visibility = View.INVISIBLE
-
 
         }
 
