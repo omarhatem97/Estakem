@@ -23,7 +23,7 @@ class sala : AppCompatActivity() {
 
 
 
-        var s:String? = intent.extras.getString("fareda_name") // the prayer name
+        var s:String? = intent.extras?.getString("fareda_name") // the prayer name
 
         // control the text displayed with respect to name
 
@@ -318,7 +318,41 @@ class sala : AppCompatActivity() {
                         editor1.putString("keys", temp)
                         editor1.commit()
 
-                    } else {
+                    }
+                    else if(s == "السنن الرواتب")
+                    {
+                        //putting variables in shared pref by using key and value method
+                        editor.putString("سنة الفجر", "سنة الفجر" + "," + startdate + "," + numcoins + "," + rating.toString() + "," + "false"
+                                + "," + num_days)
+
+
+                        //editor.putString("keys" , s+",")
+                        editor.putString("سنة الظهر", "سنة الظهر" + "," + startdate + "," + numcoins + "," + rating.toString() + "," + "false"
+                                + "," + num_days)
+
+                        editor.putString("سنة العصر", "سنة العصر" + "," + startdate + "," + numcoins + "," + rating.toString() + "," + "false"
+                                + "," + num_days)
+
+
+                        editor.putString("سنة المغرب", "سنة المغرب" + "," + startdate + "," + numcoins + "," + rating.toString() + "," + "false"
+                                + "," + num_days)
+
+
+                        editor.putString("سنة العشاء", "سنة العشاء" + "," + startdate + "," + numcoins + "," + rating.toString() + "," + "false"
+                                + "," + num_days)
+
+                        editor.commit()
+
+                        //editor 1
+                        var temp = getdataback_slicedform("keyshared")
+                        if (temp == null)
+                            temp = "سنة الفجر,سنة الظهر,سنة العصر,سنة المغرب,سنة العشاء" + ","
+                        else temp = temp + "سنة الفجر,سنة الظهر,سنة العصر,سنة المغرب,سنة العشاء" + ","
+                        editor1.putString("keys", temp)
+                        editor1.commit()
+                    }
+
+                    else {
                         //putting variables in shared pref by using key and value method
                         editor.putString(s, s + "," + startdate + "," + numcoins + "," + rating.toString() + "," + "false"
                                 + "," + num_days)

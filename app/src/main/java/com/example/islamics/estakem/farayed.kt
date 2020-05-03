@@ -16,7 +16,7 @@ class farayed : AppCompatActivity() {
         Log.d("check in frayed",MyApplication.checked.toString())
         // data of frayed
         val frayed = ArrayList<data_farayed>()
-        val elname:String = intent.extras.getString("name")
+        val elname: String? = intent.extras?.getString("name")
         Log.d("esm el button",elname)
 
         //controls what to display in recycler view with respect to the button clicked

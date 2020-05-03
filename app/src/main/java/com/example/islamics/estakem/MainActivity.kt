@@ -549,7 +549,7 @@ class MainActivity : AppCompatActivity() {
         Log.d("valueBefore" , value)
 
         //var l=mycards[viewHolder.adapterPosition].name+","
-        var newvalue:String = isSubstring(mycards[viewHolder.adapterPosition].name+"," , value)
+        var newvalue:String = isSubstring(mycards[viewHolder.adapterPosition].name+"," , value.toString())
 
         Log.d("newvalue", newvalue)
 
@@ -718,7 +718,7 @@ class MainActivity : AppCompatActivity() {
         Log.d("valueBefore" , value)
 
         //var l=mycards[viewHolder.adapterPosition].name+","
-        var newvalue:String = isSubstring(mycards[viewHolder.adapterPosition].name+"," , value)
+        var newvalue:String = isSubstring(mycards[viewHolder.adapterPosition].name+"," , value.toString())
 
         Log.d("newvalue", newvalue)
 
