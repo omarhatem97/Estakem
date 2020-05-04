@@ -57,7 +57,7 @@
         android:layout_height="76dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="24dp"
-        android:fontFamily="@font/lalezar_fegular"
+        android:fontFamily="@font/mada_bold"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:text="وَالَّذِينَ جَاهَدُوا فِينَا لَنَهْدِيَنَّهُمْ سُبُلَنَا وَإِنَّ اللَّهَ لَمَعَ الْمُحْسِنِينَ"
