@@ -1,4 +1,0 @@
-#Mon Jan 27 17:57:52 EET 2020
-base.0=C\:\\Users\\Shimaa\\AndroidStudioProjects\\Estakem\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\45
-path.0=classes.dex
-renamed.0=classes.dex

@@ -20,10 +20,11 @@ import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.activity_engazat.*
+import kotlinx.android.synthetic.main.activity_engazat.deleteall_but
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.tanshet
 import kotlinx.android.synthetic.main.activity_mychallenges.*
-import kotlinx.android.synthetic.main.activity_mychallenges.deleteall_but
+
+
 import java.text.SimpleDateFormat
 
 class mychallenges : AppCompatActivity() {
@@ -180,9 +181,9 @@ class mychallenges : AppCompatActivity() {
 
         else
         {
-            mychallengesText.visibility = View.INVISIBLE
+
             tanshet.visibility = View.INVISIBLE
-            deletebut.visibility = View.INVISIBLE
+            deleteall_but.visibility = View.INVISIBLE
         }
         //end habd gded --------------------
         hs1_recycler.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL,false)
