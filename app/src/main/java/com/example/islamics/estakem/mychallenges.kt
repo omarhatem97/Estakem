@@ -40,23 +40,30 @@ class mychallenges : AppCompatActivity() {
         reload()
     }
 
+
+    override fun onBackPressed() {
+        val intent = Intent(context, MainActivity::class.java)
+        startActivity(intent)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mychallenges)
 
-    /*****for notifications********/
 
-    val pref = getSharedPreferences("ActivityPREF", Context.MODE_PRIVATE)
-    //Log.d("shi5ara",pref.getBoolean("activity_executed", false).toString())
-    if (pref.getBoolean("activity_executed", false)==false) {
-        val ed = pref.edit()
-        ed.putBoolean("activity_executed", true)
-        ed.commit()
-        //Log.d("shi5ara",pref.getBoolean("activity_executed", false).toString())
-        omar(50)
-    }
+        /*****for notifications********/
 
-    /******5alas*********/
+        val pref = getSharedPreferences("ActivityPREF", Context.MODE_PRIVATE)
+        Log.d("shi5ara",pref.getBoolean("activity_executed", false).toString())
+        if (!pref.getBoolean("activity_executed", false)) {
+            val ed = pref.edit()
+            ed.putBoolean("activity_executed", true)
+            ed.commit()
+            //Log.d("shi5ara",pref.getBoolean("activity_executed", false).toString())
+            omar(51)
+        }
+
+        /******5alas*********/
 
 
 
@@ -73,17 +80,7 @@ class mychallenges : AppCompatActivity() {
         builder.setPositiveButton("نعم",{dialogInterface, i ->clearAll()  })
         builder.setNegativeButton("لا",{dialogInterface, i ->})
         builder.show()
-
-//            mychallengesText.visibility = View.INVISIBLE
-//            tanshet.visibility = View.INVISIBLE
-//            deletebut.visibility = View.INVISIBLE
-
-
     }
-
-
-
-
 
 
 
@@ -703,101 +700,104 @@ fun isSubstring(s1: String, s2: String): String
 
 /*****************end*****************************************/
 
-
-fun omar(notificationId: Int)
-{
-
-    var notification_manager: NotificationManager =  this.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager;
-
-    var chanel_id:String = "3000"
-    var name:CharSequence = "Channel Name"
-    var description:String = "Chanel Description"
-    var importance:Int = NotificationManager.IMPORTANCE_LOW
-    var notification_builder = null
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+    fun omar(notificationId: Int)
     {
-        var mChannel: NotificationChannel = NotificationChannel(chanel_id, name, importance)
-        mChannel.setDescription(description)
-        mChannel.enableLights(true)
-        mChannel.setLightColor(Color.BLUE)
-        notification_manager.createNotificationChannel(mChannel)
-        var notification_builder = NotificationCompat.Builder(this, chanel_id)
+
+        var notification_manager: NotificationManager =  this.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager;
+
+        var chanel_id:String = "3000"
+        var name:CharSequence = "Channel Name"
+        var description:String = "Chanel Description"
+        var importance:Int = NotificationManager.IMPORTANCE_LOW
+        var notification_builder = null
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+        {
+            var mChannel: NotificationChannel = NotificationChannel(chanel_id, name, importance)
+            mChannel.setDescription(description)
+            mChannel.enableLights(true)
+            mChannel.setLightColor(Color.BLUE)
+            notification_manager.createNotificationChannel(mChannel)
+            var notification_builder = NotificationCompat.Builder(this, chanel_id)
 
 
-        val intent = Intent(this, MainActivity::class.java)
-        val activity = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+            val intent = Intent(this, MainActivity::class.java)
+            val activity = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 
 
-        notification_builder.setSmallIcon(R.drawable.mosq)
-                .setContentTitle("لنواصل السير الي الله")
-                .setContentText("استعن بالله ولا تعجز...لا تحقرن صغيرة إن الجبال من الحصا!")
-                .setAutoCancel(true)
-                .setContentIntent(activity)
+            notification_builder.setSmallIcon(R.drawable.mosq)
+                    .setContentTitle("لنواصل السير الي الله")
+                    .setContentText("استعن بالله ولا تعجز...لا تحقرن صغيرة إن الجبال من الحصا!")
+                    .setAutoCancel(true)
+                    .setContentIntent(activity)
 
 
-        notification_builder.setContentIntent(activity)
+            notification_builder.setContentIntent(activity)
 
-        //
-        var nm: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        nm.notify(50 ,notification_builder.build())
+            //
+            var nm: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            nm.notify(51 ,notification_builder.build())
 
 
 
-        val notification = notification_builder.build()
+            val notification = notification_builder.build()
 
-        val notificationIntent = Intent(this, MyNotificationPublisher::class.java)
-        notificationIntent.putExtra(MyNotificationPublisher.NOTIFICATION_ID, notificationId)
-        notificationIntent.putExtra(MyNotificationPublisher.NOTIFICATION, notification)
-        val pendingIntent = PendingIntent.getBroadcast(this, notificationId, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT)
+            val notificationIntent = Intent(this, MyNotificationPublisher::class.java)
+            notificationIntent.putExtra(MyNotificationPublisher.NOTIFICATION_ID, notificationId)
+            notificationIntent.putExtra(MyNotificationPublisher.NOTIFICATION, notification)
+            val pendingIntent = PendingIntent.getBroadcast(this, notificationId, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT)
 
-        //val futureInMillis = SystemClock.elapsedRealtime() + 5000 //12 hours
-        // val futureInMillis:Long = java.lang.System.currentTimeMillis() + 1000//12 hours
-        // Log.d("ellee7namsh3rfeno" , futureInMillis.toString())
-        val alarmManager = this.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        //alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent)
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP , java.lang.System.currentTimeMillis(),1000*60*60*24,pendingIntent)
+            //val futureInMillis = SystemClock.elapsedRealtime() + 5000 //12 hours
+            // val futureInMillis:Long = java.lang.System.currentTimeMillis() + 1000//12 hours
+            // Log.d("ellee7namsh3rfeno" , futureInMillis.toString())
+            val alarmManager = this.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            //alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent)
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP , java.lang.System.currentTimeMillis(),1000*60*60*24,pendingIntent)
+
+        }
+        else
+        {
+            var notification_builder = NotificationCompat.Builder(this)
+            val intent = Intent(this, MainActivity::class.java)
+            val activity = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+
+
+            notification_builder.setSmallIcon(R.drawable.mosq)
+                    .setContentTitle("لنواصل السير إلي الله")
+                    .setContentText("استعن بالله ولا تعجز...لا تحقرن صغيرة إن الجبال من الحصا!")
+                    .setAutoCancel(true)
+                    .setContentIntent(activity)
+
+
+            notification_builder.setContentIntent(activity)
+
+            //
+            var nm: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            nm.notify(51 ,notification_builder.build())
+
+
+
+            val notification = notification_builder.build()
+
+            val notificationIntent = Intent(this, MyNotificationPublisher::class.java)
+            notificationIntent.putExtra(MyNotificationPublisher.NOTIFICATION_ID, notificationId)
+            notificationIntent.putExtra(MyNotificationPublisher.NOTIFICATION, notification)
+            val pendingIntent = PendingIntent.getBroadcast(this, notificationId, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT)
+
+            // val futureInMillis = SystemClock.elapsedRealtime() + delay
+            val alarmManager = this.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP , java.lang.System.currentTimeMillis(), 1000*60*60*24, pendingIntent)
+        }
+
+
+
+
+
 
     }
-    else
-    {
-        var notification_builder = NotificationCompat.Builder(this)
-        val intent = Intent(this, MainActivity::class.java)
-        val activity = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-
-
-        notification_builder.setSmallIcon(R.drawable.mosq)
-                .setContentTitle("لنواصل السير إلي الله")
-                .setContentText("استعن بالله ولا تعجز...لا تحقرن صغيرة إن الجبال من الحصا!")
-                .setAutoCancel(true)
-                .setContentIntent(activity)
-
-
-        notification_builder.setContentIntent(activity)
-
-        //
-        var nm: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        nm.notify(50 ,notification_builder.build())
-
-
-
-        val notification = notification_builder.build()
-
-        val notificationIntent = Intent(this, MyNotificationPublisher::class.java)
-        notificationIntent.putExtra(MyNotificationPublisher.NOTIFICATION_ID, notificationId)
-        notificationIntent.putExtra(MyNotificationPublisher.NOTIFICATION, notification)
-        val pendingIntent = PendingIntent.getBroadcast(this, notificationId, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT)
-
-        // val futureInMillis = SystemClock.elapsedRealtime() + delay
-        val alarmManager = this.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP , java.lang.System.currentTimeMillis(), 1000*60*60*24, pendingIntent)
-    }
 
 
 
 
-
-
-}
 
 /*****************end*****************************************/
 
@@ -999,6 +999,9 @@ fun reload()
     hs1_recycler.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
     hs1_recycler.adapter = mainAdapter(mycart, this, startdate)
 }
+
+
+
 
 
 }

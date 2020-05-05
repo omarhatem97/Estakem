@@ -3243,20 +3243,19 @@ public final class R {
     public static final int shyikh_zayed1=0x7f0600a2;
     public static final int shyikh_zayed3=0x7f0600a3;
     public static final int shyikh_zayed4=0x7f0600a4;
-    public static final int side_nav_bar=0x7f0600a5;
-    public static final int stars=0x7f0600a6;
-    public static final int start_bg=0x7f0600a7;
-    public static final int style_progressbar=0x7f0600a8;
-    public static final int tooltip_frame_dark=0x7f0600a9;
-    public static final int tooltip_frame_light=0x7f0600aa;
-    public static final int underaya=0x7f0600ab;
-    public static final int win=0x7f0600ac;
-    public static final int win1=0x7f0600ad;
-    public static final int yarab=0x7f0600ae;
-    public static final int yellow=0x7f0600af;
-    public static final int yellowpage=0x7f0600b0;
-    public static final int zakah=0x7f0600b1;
-    public static final int zayedmosque=0x7f0600b2;
+    public static final int stars=0x7f0600a5;
+    public static final int start_bg=0x7f0600a6;
+    public static final int style_progressbar=0x7f0600a7;
+    public static final int tooltip_frame_dark=0x7f0600a8;
+    public static final int tooltip_frame_light=0x7f0600a9;
+    public static final int underaya=0x7f0600aa;
+    public static final int win=0x7f0600ab;
+    public static final int win1=0x7f0600ac;
+    public static final int yarab=0x7f0600ad;
+    public static final int yellow=0x7f0600ae;
+    public static final int yellowpage=0x7f0600af;
+    public static final int zakah=0x7f0600b0;
+    public static final int zayedmosque=0x7f0600b1;
   }
   public static final class font {
     public static final int andalus=0x7f070000;
