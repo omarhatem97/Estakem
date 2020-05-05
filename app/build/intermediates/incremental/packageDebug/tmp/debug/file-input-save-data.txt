@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sun May 03 23:43:02 EET 2020
+#Tue May 05 06:21:58 EET 2020
 0.baseType=DIRECTORY
 0.base=C\:\\Users\\Omar Hatem\\Desktop\\estakem_copy\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
 0.path=classes.dex

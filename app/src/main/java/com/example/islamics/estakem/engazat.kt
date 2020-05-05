@@ -71,12 +71,13 @@ class engazat : AppCompatActivity() {
 
                 val strs = m[k]?.split(",")?.toTypedArray()
 
-//                var rating = (strs?.get(3).toString() + "f").toFloat()
 
-                var thename:String = "أيام"
-                if(k == "صيام الخميس" || k== "صيام الاثنين" ||k == "صلاة الجمعة علي وقتها")
+                var tocheck = strs?.get(0).toString()
+                var thename= "أيام"
+                if(tocheck == "صيام الخميس" || tocheck== "صيام الاثنين" ||tocheck == "صلاة الجمعة علي وقتها") {
+
                     thename = "أسبوع"
-
+                }
                 mycards.add(dataHabits(strs?.get(0).toString(), R.drawable.red, R.drawable.yellow
                         , R.drawable.coin, strs?.get(1).toString(), strs?.get(2).toString(), strs?.get(3)?.toFloat()!!, true, thename))
             }
@@ -227,9 +228,12 @@ class engazat : AppCompatActivity() {
 
 //                var rating = (strs?.get(3).toString() + "f").toFloat()
 
-                var thename:String = "أيام"
-                if(k == "صيام الخميس" || k== "صيام الاثنين" ||k == "صلاة الجمعة علي وقتها")
+                var tocheck = strs?.get(0).toString()
+                var thename= "أيام"
+                if(tocheck == "صيام الخميس" || tocheck== "صيام الاثنين" ||tocheck == "صلاة الجمعة علي وقتها") {
+
                     thename = "أسبوع"
+                }
 
                 mycart.add(dataHabits(strs?.get(0).toString(), R.drawable.red, R.drawable.yellow
                         , R.drawable.coin, strs?.get(1).toString(), strs?.get(2).toString(), strs?.get(3)?.toFloat()!!, true, thename))

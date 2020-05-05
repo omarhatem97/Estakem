@@ -27,10 +27,10 @@ class farayed : AppCompatActivity() {
             frayed.add(data_farayed("صيام رمضان", R.drawable.fanos, R.drawable.yellow, R.drawable.yellow))
             frayed.add(data_farayed("طلب العلم", R.drawable.book1, R.drawable.blue, R.drawable.blue))
             frayed.add(data_farayed("بر الوالدين", R.drawable.parent, R.drawable.pink, R.drawable.pink))
-            frayed.add(data_farayed("قراءة القرآن" , R.drawable.quran, R.drawable.green, R.drawable.green))
-            frayed.add(data_farayed("صلاة الجمعة علي وقتها", R.drawable.gomaa, R.drawable.green, R.drawable.green))
-            frayed.add(data_farayed("الزكاة" , R.drawable.zakah, R.drawable.red, R.drawable.red))
-            frayed.add(data_farayed("صلة الأرحام" , R.drawable.family, R.drawable.yellow, R.drawable.yellow))
+            frayed.add(data_farayed("قراءة القرآن" , R.drawable.quraan, R.drawable.yellow, R.drawable.yellow))
+            frayed.add(data_farayed("صلاة الجمعة علي وقتها", R.drawable.gomaa, R.drawable.blue, R.drawable.blue))
+            frayed.add(data_farayed("الزكاة" , R.drawable.zakat, R.drawable.green, R.drawable.green))
+            frayed.add(data_farayed("صلة الأرحام" , R.drawable.family, R.drawable.red, R.drawable.red))
             // end datafrayed
         }
         else if (elname == "nwafel")
