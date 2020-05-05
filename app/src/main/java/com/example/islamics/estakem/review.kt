@@ -33,7 +33,10 @@ class review : AppCompatActivity() {
         name.text=nameinrev
         var num_of_checked_days=coinsinrev.toString().toInt()/5
         myvalue.text=num_of_checked_days.toString()+" /"
-        total.text = "أيام   "+(numdays_separated?.get(1))
+
+        if(nameinrev == "صيام الخميس" || nameinrev == "صيام الاثنين" || nameinrev == "صلاة الجمعة علي وقتها")
+            total.text = "أسبوع   "+(numdays_separated?.get(1))
+        else total.text = "أيام   "+(numdays_separated?.get(1))
 
                 // el kalam elle hytketeb
         if(progress_as_int < 75 )

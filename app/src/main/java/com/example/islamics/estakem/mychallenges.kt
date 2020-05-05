@@ -136,7 +136,7 @@ class mychallenges : AppCompatActivity() {
 
                 var rating = (strs?.get(2).toString() + "f").toFloat() / (strs?.get(5).toString()).toFloat()
 
-                var diff = calc_day(strs?.get(1).toString())
+                var diff = calc_day(strs?.get(1).toString() , k)
                 editor.putString(k, k + ","
                         + strs?.get(1).toString() + ","
                         + strs?.get(2).toString() + ","
@@ -168,10 +168,13 @@ class mychallenges : AppCompatActivity() {
                 }
                 //end habda gdeda
 
+                var thename:String = "أيام"
+                if(k == "صيام الخميس" || k== "صيام الاثنين" ||k == "صلاة الجمعة علي وقتها")
+                    thename = "أسبوع"
 
                 mycard.add(dataHabits(strs?.get(0).toString(), R.drawable.red, R.drawable.yellow
                         , R.drawable.coin, strs?.get(2).toString(), diff.toString() + "/" + strs?.get(5).toString()
-                        , rating, habda.toBoolean()))
+                        , rating, habda.toBoolean(), thename))
                 // }
             }
         }
@@ -234,7 +237,7 @@ class mychallenges : AppCompatActivity() {
 
             var rating = (strs?.get(2).toString() + "f").toFloat() / (strs?.get(5).toString()).toFloat()
 
-            var diff = calc_day(strs?.get(1).toString())
+            var diff = calc_day(strs?.get(1).toString(), k)
             editor.putString(k, k + ","
                     + strs?.get(1).toString() + ","
                     + strs?.get(2).toString() + ","
@@ -261,10 +264,13 @@ class mychallenges : AppCompatActivity() {
             }
             //end habda gdeda
 
+            var thename:String = "أيام"
+            if(k == "صيام الخميس" || k== "صيام الاثنين" ||k == "صلاة الجمعة علي وقتها")
+                thename = "أسبوع"
 
             mycards.add(dataHabits(strs?.get(0).toString(), R.drawable.red, R.drawable.yellow
                     , R.drawable.coin, strs?.get(2).toString(), diff.toString() + "/" + strs?.get(5).toString()
-                    , rating, habda.toBoolean()))
+                    , rating, habda.toBoolean(), thename))
             // }
         }
     }
@@ -357,7 +363,7 @@ private fun add_engaz(viewHolder: mainAdapter.ViewHolder)
     val strs = v?.split(",")?.toTypedArray()
     Log.d("array:" , strs?.get(0).toString())
 
-    var diff = calc_day(strs?.get(1).toString())
+    var diff = calc_day(strs?.get(1).toString(), card.name)
 
     Log.d("numcoinsandrating",v.toString())
 
@@ -507,7 +513,7 @@ fun get_correct_format(s:String):String
 
 
 //fun
-fun calc_day(startdate_String:String) : Long {
+fun calc_day(startdate_String:String , name:String) : Long {
     val myFormat = SimpleDateFormat("dd MM yyyy")
     val inputString1 = get_correct_format(startdate_String)
     val inputString2 = get_correct_format(java.util.Calendar.getInstance().time.toString())
@@ -517,6 +523,23 @@ fun calc_day(startdate_String:String) : Long {
     val date2 = myFormat.parse(inputString2)
     val diff = (date2.time - date1.time)/(1000*3600*24)
     //System.out.println("Days: " + TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS))
+
+    val seven:Long = 7
+    if(name == "صيام الخميس" || name == "صيام الاثنين" || name == "صلاة الجمعة علي وقتها")
+    {
+        var result = diff.toInt()/7
+        if(diff < 7.toLong()) return (result +1).toLong()
+
+        else if (diff.toInt() % 7 == 0)
+        {
+            Log.d("diffnew" , result.toString())
+            Log.d("diffnfsaha" , diff.toString())
+            return (result +1).toLong()
+        }
+
+        return result.toLong()
+    }
+
     return diff+1
 }
 
@@ -616,7 +639,7 @@ fun refresh()
 
             var rating = (strs?.get(2).toString() + "f").toFloat() / (strs?.get(5).toString()).toFloat()
 
-            var diff = calc_day(strs?.get(1).toString())
+            var diff = calc_day(strs?.get(1).toString(), k)
             editor.putString(k, k + ","
                     + strs?.get(1).toString() + ","
                     + strs?.get(2).toString() + ","
@@ -642,10 +665,13 @@ fun refresh()
             }
             //end habda gdeda
 
+            var thename:String = "أيام"
+            if(k == "صيام الخميس" || k== "صيام الاثنين" ||k == "صلاة الجمعة علي وقتها")
+                thename = "أسبوع"
 
             mycard_refresh.add(dataHabits(strs?.get(0).toString(), R.drawable.red, R.drawable.yellow
                     , R.drawable.coin, strs?.get(2).toString(), diff.toString() + "/" + strs?.get(5).toString()
-                    , rating, habda.toBoolean()))
+                    , rating, habda.toBoolean(),thename))
             // }
         }
     }
@@ -852,7 +878,7 @@ fun saveSharedpref()
 
             var rating = (strs?.get(2).toString() + "f").toFloat() / (strs?.get(5).toString()).toFloat()
 
-            var diff = calc_day(strs?.get(1).toString())
+            var diff = calc_day(strs?.get(1).toString(),k)
             editor.putString(k, k + ","
                     + strs?.get(1).toString() + ","
                     + strs?.get(2).toString() + ","
@@ -879,10 +905,13 @@ fun saveSharedpref()
             }
             //end habda gdeda
 
+            var thename:String = "أيام"
+            if(k == "صيام الخميس" || k== "صيام الاثنين" ||k == "صلاة الجمعة علي وقتها")
+                thename = "أسبوع"
 
             mycards.add(dataHabits(strs?.get(0).toString(), R.drawable.red, R.drawable.yellow
                     , R.drawable.coin, strs?.get(2).toString(), diff.toString() + "/" + strs?.get(5).toString()
-                    , rating, habda.toBoolean()))
+                    , rating, habda.toBoolean(), thename))
             // }
         }
     }
@@ -949,7 +978,7 @@ fun reload()
 
             var rating = (strs?.get(2).toString() + "f").toFloat() / (strs?.get(5).toString()).toFloat()
 
-            var diff = calc_day(strs?.get(1).toString())
+            var diff = calc_day(strs?.get(1).toString(), k)
             editor.putString(k, k + ","
                     + strs?.get(1).toString() + ","
                     + strs?.get(2).toString() + ","
@@ -982,10 +1011,13 @@ fun reload()
             //end habda gdeda
             //end habda gdeda
 
+            var thename:String = "أيام"
+            if(k == "صيام الخميس" || k== "صيام الاثنين" ||k == "صلاة الجمعة علي وقتها")
+                thename = "أسبوع"
 
             mycart.add(dataHabits(strs?.get(0).toString(), R.drawable.red, R.drawable.yellow
                     , R.drawable.coin, strs?.get(2).toString(), diff.toString() + "/" + strs?.get(5).toString()
-                    , rating, habda.toBoolean()))
+                    , rating, habda.toBoolean(), thename))
             // }
         }
 

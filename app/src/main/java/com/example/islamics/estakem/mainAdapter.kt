@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.card_frayed.view.thinbar
 import kotlinx.android.synthetic.main.curr_habits.view.*
 
 import android.widget.CheckBox
-
+import org.w3c.dom.Text
 
 
 class mainAdapter (val input: ArrayList<dataHabits>,var ctx: Context,var startdate:String) : RecyclerView.Adapter<mainAdapter.ViewHolder>()
@@ -49,7 +49,7 @@ class mainAdapter (val input: ArrayList<dataHabits>,var ctx: Context,var startda
         holder.ratingbar.rating = data.rating
         holder.check.isChecked = data.check
         holder.myitemdata = data
-
+        holder.day_week.text = data.DayWeek
 
         //shared prefrences
 
@@ -141,6 +141,7 @@ class mainAdapter (val input: ArrayList<dataHabits>,var ctx: Context,var startda
         val numdays = itemview.numdays as TextView
         val ratingbar = itemview.ratingBar as RatingBar
         val check = itemview.check as CheckBox
+        val day_week = itemview.textView9 as TextView
 
         var myCheckBox: CheckBox
 
