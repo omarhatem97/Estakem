@@ -65,38 +65,6 @@
             ]
         },
         {
-            "outputFile": "C:\\Users\\Omar Hatem\\Desktop\\estakem_copy\\app\\build\\intermediates\\res\\merged\\debug\\values-pt-rBR_values-pt-rBR.arsc.flat",
-            "map": [
-                {
-                    "source": "C:\\Users\\Omar Hatem\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\1a4721fc7f7b3b619b7eaf79ea4c4526\\res\\values-pt-rBR\\values-pt-rBR.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,225,331,438,527,628,746,829,909,996,1103,1215,1317,1425,1532,1642,1804,1904",
-                        "endColumns": "119,105,106,88,100,117,82,79,86,106,111,101,107,106,109,161,99,84",
-                        "endOffsets": "220,326,433,522,623,741,824,904,991,1098,1210,1312,1420,1527,1637,1799,1899,1984"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Omar Hatem\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\801387d73b2ae9e3cbbc01441b4633bb\\res\\values-pt-rBR\\values-pt-rBR.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "20",
-                        "startColumns": "4",
-                        "startOffsets": "1989",
-                        "endColumns": "100",
-                        "endOffsets": "2085"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "C:\\Users\\Omar Hatem\\Desktop\\estakem_copy\\app\\build\\intermediates\\res\\merged\\debug\\values-lv_values-lv.arsc.flat",
             "map": [
                 {
@@ -124,6 +92,38 @@
                         "startOffsets": "2003",
                         "endColumns": "100",
                         "endOffsets": "2099"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\Users\\Omar Hatem\\Desktop\\estakem_copy\\app\\build\\intermediates\\res\\merged\\debug\\values-pt-rBR_values-pt-rBR.arsc.flat",
+            "map": [
+                {
+                    "source": "C:\\Users\\Omar Hatem\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\1a4721fc7f7b3b619b7eaf79ea4c4526\\res\\values-pt-rBR\\values-pt-rBR.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,225,331,438,527,628,746,829,909,996,1103,1215,1317,1425,1532,1642,1804,1904",
+                        "endColumns": "119,105,106,88,100,117,82,79,86,106,111,101,107,106,109,161,99,84",
+                        "endOffsets": "220,326,433,522,623,741,824,904,991,1098,1210,1312,1420,1527,1637,1799,1899,1984"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Omar Hatem\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\801387d73b2ae9e3cbbc01441b4633bb\\res\\values-pt-rBR\\values-pt-rBR.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "20",
+                        "startColumns": "4",
+                        "startOffsets": "1989",
+                        "endColumns": "100",
+                        "endOffsets": "2085"
                     }
                 }
             ]
@@ -240,38 +240,6 @@
             ]
         },
         {
-            "outputFile": "C:\\Users\\Omar Hatem\\Desktop\\estakem_copy\\app\\build\\intermediates\\res\\merged\\debug\\values-uk_values-uk.arsc.flat",
-            "map": [
-                {
-                    "source": "C:\\Users\\Omar Hatem\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\1a4721fc7f7b3b619b7eaf79ea4c4526\\res\\values-uk\\values-uk.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,215,317,423,509,617,735,814,894,975,1081,1188,1286,1394,1500,1609,1779,1879",
-                        "endColumns": "109,101,105,85,107,117,78,79,80,105,106,97,107,105,108,169,99,80",
-                        "endOffsets": "210,312,418,504,612,730,809,889,970,1076,1183,1281,1389,1495,1604,1774,1874,1955"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Omar Hatem\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\801387d73b2ae9e3cbbc01441b4633bb\\res\\values-uk\\values-uk.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "20",
-                        "startColumns": "4",
-                        "startOffsets": "1960",
-                        "endColumns": "100",
-                        "endOffsets": "2056"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "C:\\Users\\Omar Hatem\\Desktop\\estakem_copy\\app\\build\\intermediates\\res\\merged\\debug\\values-en-rGB_values-en-rGB.arsc.flat",
             "map": [
                 {
@@ -299,6 +267,38 @@
                         "startOffsets": "1907",
                         "endColumns": "100",
                         "endOffsets": "2003"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\Users\\Omar Hatem\\Desktop\\estakem_copy\\app\\build\\intermediates\\res\\merged\\debug\\values-uk_values-uk.arsc.flat",
+            "map": [
+                {
+                    "source": "C:\\Users\\Omar Hatem\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\1a4721fc7f7b3b619b7eaf79ea4c4526\\res\\values-uk\\values-uk.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,215,317,423,509,617,735,814,894,975,1081,1188,1286,1394,1500,1609,1779,1879",
+                        "endColumns": "109,101,105,85,107,117,78,79,80,105,106,97,107,105,108,169,99,80",
+                        "endOffsets": "210,312,418,504,612,730,809,889,970,1076,1183,1281,1389,1495,1604,1774,1874,1955"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Omar Hatem\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\801387d73b2ae9e3cbbc01441b4633bb\\res\\values-uk\\values-uk.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "20",
+                        "startColumns": "4",
+                        "startOffsets": "1960",
+                        "endColumns": "100",
+                        "endOffsets": "2056"
                     }
                 }
             ]
@@ -910,21 +910,6 @@
             ]
         },
         {
-            "outputFile": "C:\\Users\\Omar Hatem\\Desktop\\estakem_copy\\app\\build\\intermediates\\res\\merged\\debug\\values-night-v8_values-night-v8.arsc.flat",
-            "map": [
-                {
-                    "source": "C:\\Users\\Omar Hatem\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\1a4721fc7f7b3b619b7eaf79ea4c4526\\res\\values-night-v8\\values-night-v8.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "55,125,209,293,389,491,593",
-                        "endColumns": "69,83,83,95,101,101,93",
-                        "endOffsets": "120,204,288,384,486,588,682"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "C:\\Users\\Omar Hatem\\Desktop\\estakem_copy\\app\\build\\intermediates\\res\\merged\\debug\\values-large-v4_values-large-v4.arsc.flat",
             "map": [
                 {
@@ -935,6 +920,21 @@
                         "startOffsets": "55,114,185,256,326,396,464,532,636",
                         "endColumns": "58,70,70,69,69,67,67,103,115",
                         "endOffsets": "109,180,251,321,391,459,527,631,747"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\Users\\Omar Hatem\\Desktop\\estakem_copy\\app\\build\\intermediates\\res\\merged\\debug\\values-night-v8_values-night-v8.arsc.flat",
+            "map": [
+                {
+                    "source": "C:\\Users\\Omar Hatem\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\1a4721fc7f7b3b619b7eaf79ea4c4526\\res\\values-night-v8\\values-night-v8.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "55,125,209,293,389,491,593",
+                        "endColumns": "69,83,83,95,101,101,93",
+                        "endOffsets": "120,204,288,384,486,588,682"
                     }
                 }
             ]
@@ -1306,38 +1306,6 @@
             ]
         },
         {
-            "outputFile": "C:\\Users\\Omar Hatem\\Desktop\\estakem_copy\\app\\build\\intermediates\\res\\merged\\debug\\values-kn_values-kn.arsc.flat",
-            "map": [
-                {
-                    "source": "C:\\Users\\Omar Hatem\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\1a4721fc7f7b3b619b7eaf79ea4c4526\\res\\values-kn\\values-kn.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,223,335,448,536,643,770,847,924,1006,1122,1233,1332,1445,1549,1663,1827,1927",
-                        "endColumns": "117,111,112,87,106,126,76,76,81,115,110,98,112,103,113,163,99,81",
-                        "endOffsets": "218,330,443,531,638,765,842,919,1001,1117,1228,1327,1440,1544,1658,1822,1922,2004"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Omar Hatem\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\801387d73b2ae9e3cbbc01441b4633bb\\res\\values-kn\\values-kn.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "20",
-                        "startColumns": "4",
-                        "startOffsets": "2009",
-                        "endColumns": "100",
-                        "endOffsets": "2105"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "C:\\Users\\Omar Hatem\\Desktop\\estakem_copy\\app\\build\\intermediates\\res\\merged\\debug\\values-ms_values-ms.arsc.flat",
             "map": [
                 {
@@ -1365,6 +1333,38 @@
                         "startOffsets": "105,216,321,429,516,620,731,809,888,968,1080,1189,1286,1395,1498,1605,1764,1865",
                         "endColumns": "110,104,107,86,103,110,77,78,79,111,108,96,108,102,106,158,100,79",
                         "endOffsets": "211,316,424,511,615,726,804,883,963,1075,1184,1281,1390,1493,1600,1759,1860,1940"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\Users\\Omar Hatem\\Desktop\\estakem_copy\\app\\build\\intermediates\\res\\merged\\debug\\values-kn_values-kn.arsc.flat",
+            "map": [
+                {
+                    "source": "C:\\Users\\Omar Hatem\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\1a4721fc7f7b3b619b7eaf79ea4c4526\\res\\values-kn\\values-kn.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,223,335,448,536,643,770,847,924,1006,1122,1233,1332,1445,1549,1663,1827,1927",
+                        "endColumns": "117,111,112,87,106,126,76,76,81,115,110,98,112,103,113,163,99,81",
+                        "endOffsets": "218,330,443,531,638,765,842,919,1001,1117,1228,1327,1440,1544,1658,1822,1922,2004"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Omar Hatem\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\801387d73b2ae9e3cbbc01441b4633bb\\res\\values-kn\\values-kn.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "20",
+                        "startColumns": "4",
+                        "startOffsets": "2009",
+                        "endColumns": "100",
+                        "endOffsets": "2105"
                     }
                 }
             ]

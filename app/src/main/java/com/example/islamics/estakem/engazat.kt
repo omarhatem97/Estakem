@@ -64,6 +64,8 @@ class engazat : AppCompatActivity() {
 
         val valuesinOrder = temp?.split(",")?.toTypedArray()
 
+        var totalSum = 0
+
         if(m.isNotEmpty())
         {
             for (k in valuesinOrder!!)
@@ -71,6 +73,7 @@ class engazat : AppCompatActivity() {
 
                 val strs = m[k]?.split(",")?.toTypedArray()
 
+                totalSum+=strs?.get(1).toString().toInt()
 
                 var tocheck = strs?.get(0).toString()
                 var thename= "أيام"
@@ -78,7 +81,7 @@ class engazat : AppCompatActivity() {
 
                     thename = "أسبوع"
                 }
-                mycards.add(dataHabits(strs?.get(0).toString(), R.drawable.red, R.drawable.yellow
+                mycards.add(dataHabits(strs?.get(0).toString(), R.drawable.red, R.drawable.pink
                         , R.drawable.coin, strs?.get(1).toString(), strs?.get(2).toString(), strs?.get(3)?.toFloat()!!, true, thename))
             }
         }
@@ -86,6 +89,8 @@ class engazat : AppCompatActivity() {
         {
             deleteall_but.visibility = View.INVISIBLE
         }
+
+        total.text = totalSum.toString()
 
         engazaty_recycler.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL,false)
         engazaty_recycler.adapter = mainAdapter(mycards,this,"")
@@ -235,7 +240,7 @@ class engazat : AppCompatActivity() {
                     thename = "أسبوع"
                 }
 
-                mycart.add(dataHabits(strs?.get(0).toString(), R.drawable.red, R.drawable.yellow
+                mycart.add(dataHabits(strs?.get(0).toString(), R.drawable.yellow, R.drawable.red
                         , R.drawable.coin, strs?.get(1).toString(), strs?.get(2).toString(), strs?.get(3)?.toFloat()!!, true, thename))
             }
         }
