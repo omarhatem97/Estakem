@@ -179,8 +179,12 @@ class mychallenges : AppCompatActivity() {
             //end habd gded --------------------
 
             total2.text = totalsum.toString()
-            progressBar2.progress = (totalrating / totalnum).toInt()
-            percentage.text = ((totalrating / totalnum).toInt()).toString()
+
+            var tot = totalnum*5
+            var progress = (totalrating.toInt()/tot) *100
+
+            progressBar2.progress = progress
+            percentage.text = progress.toString()
 
             hs1_recycler.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
 
@@ -267,8 +271,13 @@ class mychallenges : AppCompatActivity() {
         }
 
 
-        progressBar2.progress = 100
-        percentage.text = "100"
+        total2.text = totalsum.toString()
+
+        var tot = totalnum*5
+        var progress = (totalrating.toInt()/tot) *100
+
+        progressBar2.progress = progress
+        percentage.text = progress.toString()
 
         hs1_recycler.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
         hs1_recycler.adapter = mainAdapter(mycards, this, startdate)
@@ -637,8 +646,12 @@ class mychallenges : AppCompatActivity() {
         }
         //end habd gded --------------------
         total2.text = totalsum.toString()
-        progressBar2.progress = (totalrating / totalnum!!).toInt()
-        percentage.text = ((totalrating / totalnum).toInt()).toString()
+
+        var tot = totalnum?.times(5)
+        var progress = (totalrating.toInt()/ tot!!) *100
+
+        progressBar2.progress = progress
+        percentage.text = progress.toString()
 
         hs1_recycler.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
 
@@ -965,8 +978,12 @@ class mychallenges : AppCompatActivity() {
         }
 
         total2.text = totalsum.toString()
-        progressBar2.progress = (totalrating / totalnum).toInt()
-        percentage.text = ((totalrating / totalnum).toInt()).toString()
+
+        var tot = totalnum*5
+        var progress = (totalrating.toInt()/tot) *100
+
+        progressBar2.progress = progress
+        percentage.text = progress.toString()
         hs1_recycler.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
         hs1_recycler.adapter = mainAdapter(mycart, this, startdate)
     }
