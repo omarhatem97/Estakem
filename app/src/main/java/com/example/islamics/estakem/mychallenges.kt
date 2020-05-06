@@ -318,7 +318,7 @@ class mychallenges : AppCompatActivity() {
             builder.setMessage("هل ترغب بمسح هذا التحدي ؟")
             builder.setPositiveButton("نعم", { dialogInterface, i -> clearElement(viewHolder as mainAdapter.ViewHolder,"") })
             builder.setNegativeButton("لا", { dialogInterface, i -> refresh() })
-            builder.setNeutralButton("إضافة إلي انجازاتي", { dialogInterface, i -> clearElement(viewHolder as mainAdapter.ViewHolder,"engaz") })
+            builder.setNeutralButton("إضافة إلي انجازاتي", { dialogInterface, i -> clearElement(viewHolder as mainAdapter.ViewHolder,"addengaz") })
             builder.show()
 
 

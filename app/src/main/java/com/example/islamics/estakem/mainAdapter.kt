@@ -28,7 +28,6 @@ class mainAdapter (val input: ArrayList<dataHabits>,var ctx: Context,var startda
 {
 
     var prefrences =this.ctx.getSharedPreferences("shared",0)
-    var mychallenges_context = this.ctx
     var editor: SharedPreferences.Editor = prefrences!!.edit()
 
 
@@ -43,7 +42,7 @@ class mainAdapter (val input: ArrayList<dataHabits>,var ctx: Context,var startda
         return input.size
     }
 
-    override fun onBindViewHolder(holder: mainAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         //myshared?.getString("بر الوالدين","شششششش")
         val data :dataHabits = input[position]
         holder.Thickbar.setImageResource(data.thickbar)
@@ -211,8 +210,11 @@ class mainAdapter (val input: ArrayList<dataHabits>,var ctx: Context,var startda
     fun removeItem(viewHolder:RecyclerView.ViewHolder , name:String)
     {
 
-        if(name == "engaz")
+        if(name == "addengaz")
         {
+            Log.d("enter", "addengaz")
+            //step 1 : save item to shared engaz
+
             var myshared_engaz = this.ctx.getSharedPreferences("shared_engaz", 0)
 
            // var myshared1_engaz = this.ctx.getSharedPreferences("keyshared_engaz", 0)
@@ -234,47 +236,139 @@ class mainAdapter (val input: ArrayList<dataHabits>,var ctx: Context,var startda
             val strs = v?.split(",")?.toTypedArray()
             Log.d("array:", strs?.get(0).toString())
 
-            //var diff = calc_day(strs?.get(1).toString(), input[viewHolder.adapterPosition].name)
+            var diff = calc_day(strs?.get(1).toString(), input[viewHolder.adapterPosition].name)
 
             Log.d("numcoinsandrating", v.toString())
 
             var card = input[viewHolder.adapterPosition]
 
 
-            Log.d("cardcoin",card.numofcoins )
-            Log.d("cardrating",card.rating.toString())
+            Log.d("cardcoin",strs?.get(2).toString()  )
+            Log.d("cardrating",strs?.get(3))
             //hena 8yart
-            editor_engaz.putString(last_num, card.name + "," + card.numofcoins + "," +card.numdays + "," + card.rating)
+            editor_engaz.putString(last_num, card.name + "," + strs?.get(2).toString() + "," + diff + "/" +strs?.get(5).toString()+','
+                                    + strs?.get(3))
             editor_engaz.commit()
 
 
 
-            var temp = ("keyshared_engaz")
-            if (temp == null)
-                temp = last_num + ","
-            else temp = temp + last_num + ","
-           // editor1_engaz.putString("keys", temp)
-           // editor1_engaz.commit()
+            //step 2 see changes on progressbar and total coins
+            //step 1
+            totalrating = totalrating - strs?.get(3)!!.toFloat()
+
+            //step 2
+            progress.progress = ((totalrating / (numCards*5)) *100).toInt()
+            percentage.text = ((totalrating / (numCards*5)) *100).toInt().toString()
+
+            //step 3
+            totalcoins.text = (totalcoins.text.toString().toInt() - strs?.get(2).toInt()).toString()
+
+
+            //step 2 : removing item from the recycler view
+
+            Log.d("item to remove", input[viewHolder.adapterPosition].name)
+
+            //remove item from shared preferences
+            var myshared = this.ctx.getSharedPreferences("shared",0)
+            var editor: SharedPreferences.Editor = myshared!!.edit()
+
+
+            Log.d("removing" ,input[viewHolder.adapterPosition].name)
+            editor.remove(input[viewHolder.adapterPosition].name)
+            editor.commit()
+
+
+
+            //removing from recycler view
+            input.removeAt(viewHolder.adapterPosition)
+            notifyItemRemoved(viewHolder.adapterPosition)
+
+        }
+
+        else if(name == "remove_engaz")
+        {
+            //to remove the item from the recycler view of engazaty and removing it from sharedpref
+            Log.d("enter", "remove")
+
+            //step 1 : remove item from shared pref
+            var myshared_engaz = this.ctx.getSharedPreferences("shared_engaz", 0)
+            var editor_engaz: SharedPreferences.Editor = myshared_engaz!!.edit()
+
+                    //finding the matching item to remove from the shared pref (engaz)
+
+            var m: MutableMap<String,String> = myshared_engaz.all as MutableMap<String, String>
+           // editor_engaz.putString(last_num, card.name + "," + card.numofcoins + "," +card.numdays + "," + card.rating+ ","+last_num)
+
+            var card  = input[viewHolder.adapterPosition]
+            for ((k,v) in m)
+            {
+                val strs = v.split(",")?.toTypedArray()
+
+                Log.d("tocompare" , card.name+','+card.numofcoins+','+card.numdays+','+card.rating)
+                Log.d("tocomparewith",strs[0]+','+strs[1]+','+strs[2]+','+card.rating)
+                if(card.name == strs[0] && card.numofcoins == strs[1] && card.numdays == strs[2] && card.rating.toString() == strs[3])
+                {
+                    totalcoins.text = (totalcoins.text.toString().toInt() - card.numofcoins.toInt()).toString()
+                    editor_engaz.remove(k)
+                    editor_engaz.commit()
+                }
+            }
+
+
+            //step 2 : removing from recycler view
+            input.removeAt(viewHolder.adapterPosition)
+            notifyItemRemoved(viewHolder.adapterPosition)
+
+        }
+
+        else
+        {
+             /** So you wnat to remove the element and not add it to any shared pref **/
+
+             var databack = this.ctx.getSharedPreferences("shared", 0)
+            //  var databack1 = this.ctx.getSharedPreferences("keyshared", 0)
+
+
+
+            var v = databack.getString(input[viewHolder.adapterPosition].name, "toz")
+
+            val strs = v?.split(",")?.toTypedArray()
+
+            //step 2 see changes on progressbar and total coins
+            //step 1
+            totalrating -= strs?.get(3)!!.toFloat()
+
+            //step 2
+            progress.progress = ((totalrating / (numCards*5)) *100).toInt()
+            percentage.text = ((totalrating / (numCards*5)) *100).toInt().toString()
+
+            //step 3
+            totalcoins.text = (totalcoins.text.toString().toInt() - strs?.get(2).toInt()).toString()
+
+
+            //step 2 : removing item from the recycler view
+
+            Log.d("item to remove", input[viewHolder.adapterPosition].name)
+
+            //remove item from shared preferences
+            var myshared = this.ctx.getSharedPreferences("shared",0)
+            var editor: SharedPreferences.Editor = myshared!!.edit()
+
+
+            Log.d("removing" ,input[viewHolder.adapterPosition].name)
+            editor.remove(input[viewHolder.adapterPosition].name)
+            editor.commit()
+
+
+
+            //removing from recycler view
+            input.removeAt(viewHolder.adapterPosition)
+            notifyItemRemoved(viewHolder.adapterPosition)
         }
 
 
 
-        Log.d("item to remove", input[viewHolder.adapterPosition].name)
 
-        //remove item from shared preferences
-        var myshared = this.ctx.getSharedPreferences("shared",0)
-        var editor: SharedPreferences.Editor = myshared!!.edit()
-
-
-        Log.d("removing" ,input[viewHolder.adapterPosition].name)
-        editor.remove(input[viewHolder.adapterPosition].name)
-        editor.commit()
-
-
-
-        //removing from recycler view
-        input.removeAt(viewHolder.adapterPosition)
-        notifyItemRemoved(viewHolder.adapterPosition)
     }
 
 

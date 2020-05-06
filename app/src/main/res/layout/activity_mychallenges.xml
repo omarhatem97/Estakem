@@ -57,7 +57,7 @@
 
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/buttonshape"
+        android:background="@drawable/buttonshape1"
         android:text="مسح الكل"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textColor="@android:color/background_light"

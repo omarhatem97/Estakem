@@ -50,21 +50,21 @@ class engazat : AppCompatActivity() {
         var m: MutableMap<String,String>
         m = databack.all as MutableMap<String, String>
 
-        var keys: MutableMap<String,String> = databack1.all as MutableMap<String, String>
-        Log.d("el keys",keys.toString())
-
-        Log.d("checked is ",MyApplication.checked.toString())
-        val thestring :String? = keys["keys"]
-        var tempsize = 0
-        var temp = ""
-
-        if(thestring != null)
-        {
-            if (thestring.length >0)
-                temp = thestring?.substring(0,thestring.length-1)
-        }
-
-        val valuesinOrder = temp?.split(",")?.toTypedArray()
+//        var keys: MutableMap<String,String> = databack1.all as MutableMap<String, String>
+//        Log.d("el keys",keys.toString())
+//
+//        Log.d("checked is ",MyApplication.checked.toString())
+//        val thestring :String? = keys["keys"]
+//        var tempsize = 0
+//        var temp = ""
+//
+//        if(thestring != null)
+//        {
+//            if (thestring.length >0)
+//                temp = thestring?.substring(0,thestring.length-1)
+//        }
+//
+//        val valuesinOrder = temp?.split(",")?.toTypedArray()
 
         var totalSum = 0
 
@@ -119,7 +119,8 @@ class engazat : AppCompatActivity() {
             val builder = AlertDialog.Builder(context)
             builder.setTitle("مسح الانجاز؟")
             builder.setMessage("هل ترغب بمسح هذا الانجاز ؟")
-            builder.setPositiveButton("نعم",{dialogInterface, i -> clearElement(viewHolder as mainAdapter.ViewHolder) })
+            builder.setPositiveButton("نعم") { dialogInterface, i ->
+                clearElement(viewHolder as mainAdapter.ViewHolder) }
             builder.setNegativeButton("لا",{dialogInterface, i -> refresh()})
             builder.show()
 
@@ -178,9 +179,13 @@ class engazat : AppCompatActivity() {
     fun clearElement(viewHolder:mainAdapter.ViewHolder)
     {
 
-        (engazaty_recycler.adapter as mainAdapter).removeItem(viewHolder,"engaz")
+        (engazaty_recycler.adapter as mainAdapter).removeItem(viewHolder,"remove_engaz")
     }
 
+
+    fun updateStatus(){
+
+    }
 
 
     fun refresh()
@@ -213,12 +218,12 @@ class engazat : AppCompatActivity() {
 
         if(m.isNotEmpty())
         {
-            for (k in valuesinOrder!!)
+            for ((k,v) in m)
             {
 
-                val strs = m[k]?.split(",")?.toTypedArray()
+                val strs = v.split(",")?.toTypedArray()
 
-//                var rating = (strs?.get(3).toString() + "f").toFloat()
+
 
                 var tocheck = strs?.get(0).toString()
                 var thename= "أيام"
@@ -226,8 +231,7 @@ class engazat : AppCompatActivity() {
 
                     thename = "أسبوع"
                 }
-
-                mycart.add(dataHabits(strs?.get(0).toString(), R.drawable.yellow, R.drawable.red
+                mycart.add(dataHabits(strs?.get(0).toString(), R.drawable.red, R.drawable.pink
                         , R.drawable.coin, strs?.get(1).toString(), strs?.get(2).toString(), strs?.get(3)?.toFloat()!!, true, thename))
             }
         }
