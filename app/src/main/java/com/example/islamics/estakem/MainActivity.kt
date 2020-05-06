@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.NotificationCompat
 import android.support.v7.widget.CardView
+import android.util.Log
 
 
 import android.widget.RelativeLayout
@@ -36,6 +37,9 @@ class MainActivity : AppCompatActivity()
         setContentView(R.layout.activity_main)
 
 
+        var toz = ",الفجر,الظهر,العصر,المغرب,العشاء"
+        var tozen = isSubstring("العصر",toz)
+        print("tozen is: "+tozen)
 
 
 
@@ -194,6 +198,30 @@ class MainActivity : AppCompatActivity()
 
     /********************/
 
+    fun isSubstring(word: String, keys: String): String {
+        //first: split the keys to array
+        val strs = keys?.split(",")?.toTypedArray()
 
+        //second: find the matching key
+        var idx: Int = 0
+        for (i in 0..strs.size-1) {
+            if (word == strs[i]) {
+                idx = i
+                break
+            }
+        }
+
+        //rebuild the string ignoring the matching key
+        var finalkeys = ""
+        for (i in 0..strs.size-1) {
+            if (i != idx && strs[i]!= "") {
+                finalkeys += strs[i] + ','
+            }
+        }
+
+        Log.d("valueb", keys)
+        Log.d("valueafter", finalkeys)
+        return finalkeys
+    }
 }
 

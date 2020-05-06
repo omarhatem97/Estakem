@@ -76,7 +76,7 @@ class tarkzanb : AppCompatActivity() {
                     editor.commit()
 
 
-                    val intent = Intent(this, MainActivity::class.java)
+                    val intent = Intent(this, mychallenges::class.java)
                     intent.putExtra("startdate", startdate)
                     startActivity(intent)
 

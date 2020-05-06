@@ -35,10 +35,10 @@ class mychallenges : AppCompatActivity() {
     var startdate: String = " "
 
 
-    override fun onResume() {
-        super.onResume()
-        reload()
-    }
+//    override fun onResume() {
+//        super.onResume()
+//        reload()
+//    }
 
 
     override fun onBackPressed() {
@@ -65,6 +65,13 @@ class mychallenges : AppCompatActivity() {
 
         /******5alas*********/
 
+        /********debugging only**********/
+
+        var toz = ",الفجر,الظهر,العصر,المغرب,العشاء"
+        Log.d("toz" , isSubstring(toz,"العصر"))
+        /*********************************/
+
+
 
         newDay_remove_check()
         myshared = getSharedPreferences("shared", 0)
@@ -86,110 +93,115 @@ class mychallenges : AppCompatActivity() {
 
 
         tanshet.setOnClickListener {
-            var startdate: String = " "
-            newDay_remove_check()
-            val mycard = ArrayList<dataHabits>()
+            reload()
 
-
-            //habd gded----------------------------------------
-            //newDay_remove_check()
-            var databack = getSharedPreferences("shared", 0)
-            var databack1 = getSharedPreferences("keyshared", 0) // to get back the keys
-
-
-            //the recyclerview
-            var m: MutableMap<String, String>
-            m = databack.all as MutableMap<String, String>
-
-            var keys: MutableMap<String, String> = databack1.all as MutableMap<String, String>
-            Log.d("el keys", keys.toString())
-
-            //Log.d("checked is ",MyApplication.checked.toString())
-            val thestring: String? = keys["keys"]
-            // val temp = thestring?.substring(0,thestring.length-1)
-
-            var temp = ""
-
-            if (thestring != null) {
-                if (thestring.length > 0)
-                    temp = thestring?.substring(0, thestring.length - 1)
-            }
-
-            val valuesinOrder = temp?.split(",")?.toTypedArray()
-            //val valuesinOrder = temp?.split(",")?.toTypedArray()
-            Log.d("ydenela", valuesinOrder?.get(0).toString())
-
-            var totalsum = 0
-            var totalrating = 0f
-            var totalnum = valuesinOrder.size
-            if (m.isNotEmpty()) {
-                Log.d("elmap", m.toString())
-                for (k in valuesinOrder!!) {
-
-                    val strs = m[k]?.split(",")?.toTypedArray()
-                    startdate = strs?.get(1).toString()
-
-                    var rating = (strs?.get(2).toString() + "f").toFloat() / (strs?.get(5).toString()).toFloat()
-
-                    var diff = calc_day(strs?.get(1).toString(), k)
-                    editor.putString(k, k + ","
-                            + strs?.get(1).toString() + ","
-                            + strs?.get(2).toString() + ","
-                            + strs?.get(3).toString() + ","
-                            + strs?.get(4).toString() + "," + strs?.get(5).toString())
-                    //editor.clear()
-                    editor.commit()
-
-                    //de habda
-                    var habda: String = "false"
-                    var data_back_days: SharedPreferences = getSharedPreferences("shareddays", 0)
-                    //bashof ana f yom gded wlla la2
-                    if (data_back_days.getString("lastday", "not found ") != "true") {
-                        Log.d("conditioncheck", "true")
-                        habda = strs?.get(4).toString()
-                    } else {
-
-                    }
-                    //5alas keda
-
-                    //endhabda
-                    if (diff > strs?.get(5).toString().toInt()) {
-                        diff = strs?.get(5).toString().toLong()
-                        habda = "true"
-                    }
-                    //end habda gdeda
-
-                    totalsum += strs?.get(2).toString().toInt()
-                    totalrating += rating
-
-
-                    var thename: String = "أيام"
-                    if (k == "صيام الخميس" || k == "صيام الاثنين" || k == "صلاة الجمعة علي وقتها")
-                        thename = "أسبوع"
-
-                    mycard.add(dataHabits(strs?.get(0).toString(), R.drawable.red, R.drawable.pink
-                            , R.drawable.coin, strs?.get(2).toString(), diff.toString() + "/" + strs?.get(5).toString()
-                            , rating, habda.toBoolean(), thename))
-                    // }
-                }
-            } else {
-                tanshet.visibility = View.INVISIBLE
-                deleteall_but.visibility = View.INVISIBLE
-            }
-            //end habd gded --------------------
-
-            total2.text = totalsum.toString()
-
-            var tot = totalnum*5
-            var progress = (totalrating.toInt()/tot) *100
-
-            progressBar2.progress = progress
-            percentage.text = progress.toString()
-
-            hs1_recycler.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
-
-            hs1_recycler.adapter = mainAdapter(mycard, this, startdate)
-        }
+//            var startdate: String = " "
+//        newDay_remove_check()
+//        val mycard = ArrayList<dataHabits>()
+//
+//
+//        //habd gded----------------------------------------
+//        //newDay_remove_check()
+//        var databack = getSharedPreferences("shared", 0)
+//        var databack1 = getSharedPreferences("keyshared", 0) // to get back the keys
+//
+//
+//        //the recyclerview
+//        var m: MutableMap<String, String>
+//        m = databack.all as MutableMap<String, String>
+//
+//        var keys: MutableMap<String, String> = databack1.all as MutableMap<String, String>
+//        Log.d("el keys", keys.toString())
+//
+//        //Log.d("checked is ",MyApplication.checked.toString())
+//        val thestring: String? = keys["keys"]
+//        // val temp = thestring?.substring(0,thestring.length-1)
+//
+//        var temp = ""
+//
+//        if (thestring != null) {
+//            if (thestring.length > 0)
+//                temp = thestring?.substring(0, thestring.length - 1)
+//        }
+//
+//        val valuesinOrder = temp?.split(",")?.toTypedArray()
+//        //val valuesinOrder = temp?.split(",")?.toTypedArray()
+//        Log.d("ydenela", valuesinOrder?.get(0).toString())
+//
+//        var totalsum = 0
+//        var totalrating = 0f
+//        var totalnum = valuesinOrder.size
+//        if (m.isNotEmpty()) {
+//            Log.d("elmap", m.toString())
+//            for (k in valuesinOrder!!) {
+//
+//                val strs = m[k]?.split(",")?.toTypedArray()
+//                startdate = strs?.get(1).toString()
+//
+//                var rating = (strs?.get(2).toString() + "f").toFloat() / (strs?.get(5).toString()).toFloat()
+//
+//                var diff = calc_day(strs?.get(1).toString(), k)
+//                editor.putString(k, k + ","
+//                        + strs?.get(1).toString() + ","
+//                        + strs?.get(2).toString() + ","
+//                        + strs?.get(3).toString() + ","
+//                        + strs?.get(4).toString() + "," + strs?.get(5).toString())
+//                //editor.clear()
+//                editor.commit()
+//
+//                //de habda
+//                var habda: String = "false"
+//                var data_back_days: SharedPreferences = getSharedPreferences("shareddays", 0)
+//                //bashof ana f yom gded wlla la2
+//                if (data_back_days.getString("lastday", "not found ") != "true") {
+//                    Log.d("conditioncheck", "true")
+//                    habda = strs?.get(4).toString()
+//                } else {
+//
+//                }
+//                //5alas keda
+//
+//                //endhabda
+//                if (diff > strs?.get(5).toString().toInt()) {
+//                    diff = strs?.get(5).toString().toLong()
+//                    habda = "true"
+//                }
+//                //end habda gdeda
+//
+//                totalsum += strs?.get(2).toString().toInt()
+//                totalrating += rating
+//
+//
+//                var thename: String = "أيام"
+//                if (k == "صيام الخميس" || k == "صيام الاثنين" || k == "صلاة الجمعة علي وقتها")
+//                    thename = "أسبوع"
+//
+//                mycard.add(dataHabits(strs?.get(0).toString(), R.drawable.red, R.drawable.pink
+//                        , R.drawable.coin, strs?.get(2).toString(), diff.toString() + "/" + strs?.get(5).toString()
+//                        , rating, habda.toBoolean(), thename))
+//                // }
+//            }
+//        } else {
+//            tanshet.visibility = View.INVISIBLE
+//            deleteall_but.visibility = View.INVISIBLE
+//        }
+//        //end habd gded --------------------
+//
+//        total2.text = totalsum.toString()
+//
+//        var tot = totalnum*5f
+//        var progress = ((totalrating/tot) *100).toInt()
+//
+//        Log.d("tot" , tot.toString())
+//        Log.d("totalrating" , totalrating.toInt().toString())
+//
+//        progressBar2.progress = progress
+//        percentage.text = progress.toString()
+//
+//        hs1_recycler.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
+//
+//        hs1_recycler.adapter = mainAdapter(mycard, this, startdate,total2 , totalrating, totalnum, "mychallenges",progressBar2,percentage)
+       }
 
 
         var databack = getSharedPreferences("shared", 0)
@@ -273,14 +285,14 @@ class mychallenges : AppCompatActivity() {
 
         total2.text = totalsum.toString()
 
-        var tot = totalnum*5
-        var progress = (totalrating.toInt()/tot) *100
+        var tot = totalnum*5f
+        var progress = ((totalrating/tot) *100).toInt()
 
         progressBar2.progress = progress
         percentage.text = progress.toString()
 
         hs1_recycler.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
-        hs1_recycler.adapter = mainAdapter(mycards, this, startdate)
+        hs1_recycler.adapter = mainAdapter(mycards, this, startdate,total2 ,totalrating, totalnum, "mychallenges",progressBar2,percentage)
 
         val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
         itemTouchHelper.attachToRecyclerView(hs1_recycler)
@@ -304,9 +316,9 @@ class mychallenges : AppCompatActivity() {
             val builder = AlertDialog.Builder(context)
             builder.setTitle("مسح التحدي؟")
             builder.setMessage("هل ترغب بمسح هذا التحدي ؟")
-            builder.setPositiveButton("نعم", { dialogInterface, i -> clearElement(viewHolder as mainAdapter.ViewHolder) })
+            builder.setPositiveButton("نعم", { dialogInterface, i -> clearElement(viewHolder as mainAdapter.ViewHolder,"") })
             builder.setNegativeButton("لا", { dialogInterface, i -> refresh() })
-            builder.setNeutralButton("إضافة إلي انجازاتي", { dialogInterface, i -> add_engaz(viewHolder as mainAdapter.ViewHolder) })
+            builder.setNeutralButton("إضافة إلي انجازاتي", { dialogInterface, i -> clearElement(viewHolder as mainAdapter.ViewHolder,"engaz") })
             builder.show()
 
 
@@ -328,7 +340,7 @@ class mychallenges : AppCompatActivity() {
     private fun add_engaz(viewHolder: mainAdapter.ViewHolder) {
 
         /***********************Frist we need to save the state to shared preferences*******/
-        saveSharedpref()
+        //saveSharedpref()
         // refresh()
 
         //Adding logic
@@ -353,7 +365,7 @@ class mychallenges : AppCompatActivity() {
         val strs = v?.split(",")?.toTypedArray()
         Log.d("array:", strs?.get(0).toString())
 
-        var diff = calc_day(strs?.get(1).toString(), card.name)
+       var diff = calc_day(strs?.get(1).toString(), card.name)
 
         Log.d("numcoinsandrating", v.toString())
 
@@ -372,28 +384,29 @@ class mychallenges : AppCompatActivity() {
 
         //Removing logic
 
-        myshared = getSharedPreferences("shared", 0)
-        var editor: SharedPreferences.Editor = myshared!!.edit()
 
-        var myshared1 = getSharedPreferences("keyshared", 0)
-        var editor1: SharedPreferences.Editor = myshared1!!.edit()
-        //  MyApplication.globalvar?.remove(mycards[viewHolder.adapterPosition].name)
-        editor.remove(mycards[viewHolder.adapterPosition].name)
-        editor.commit()
-
-        var value = myshared1.getString("keys", "not ofun")
-        Log.d("valueBefore", value)
-
-        //var l=mycards[viewHolder.adapterPosition].name+","
-        var newvalue: String = isSubstring(mycards[viewHolder.adapterPosition].name + ",", value.toString())
-
-        Log.d("newvalue", newvalue)
-
-        editor1.putString("keys", newvalue)
-        editor1.commit()
-        // Log.d("editor1",editor1.toString())
-        //end some 3ak
-        (hs1_recycler.adapter as mainAdapter).removeItem(viewHolder)
+//        myshared = getSharedPreferences("shared", 0)
+//        var editor: SharedPreferences.Editor = myshared!!.edit()
+//
+//        var myshared1 = getSharedPreferences("keyshared", 0)
+//        var editor1: SharedPreferences.Editor = myshared1!!.edit()
+//        //  MyApplication.globalvar?.remove(mycards[viewHolder.adapterPosition].name)
+//        editor.remove(mycards[viewHolder.adapterPosition].name)
+//        editor.commit()
+//
+//        var value = myshared1.getString("keys", "not ofun")
+//        Log.d("valueBefore", value)
+//
+//        //var l=mycards[viewHolder.adapterPosition].name+","
+//        var newvalue: String = isSubstring(mycards[viewHolder.adapterPosition].name, value.toString())
+//
+//        Log.d("newvalue", newvalue)
+//
+//        editor1.putString("keys", newvalue)
+//        editor1.commit()
+//        // Log.d("editor1",editor1.toString())
+//        //end some 3ak
+//        (hs1_recycler.adapter as mainAdapter).removeItem(viewHolder)
 
 
     }
@@ -489,7 +502,7 @@ class mychallenges : AppCompatActivity() {
 
 
     //fun
-    fun calc_day(startdate_String: String, name: String): Long {
+     fun  calc_day(startdate_String: String, name: String): Long {
         val myFormat = SimpleDateFormat("dd MM yyyy")
         val inputString1 = get_correct_format(startdate_String)
         val inputString2 = get_correct_format(java.util.Calendar.getInstance().time.toString())
@@ -530,7 +543,7 @@ class mychallenges : AppCompatActivity() {
         MyApplication.keyname = ""
 
         val mycards = ArrayList<dataHabits>()
-        hs1_recycler.adapter = mainAdapter(mycards, this, "")
+        hs1_recycler.adapter = mainAdapter(mycards, this, "",total2 , 0f ,0, "mychallenges",progressBar2,percentage)
 
         //make button and text invisible
 
@@ -541,29 +554,35 @@ class mychallenges : AppCompatActivity() {
     }
 
 
-    fun clearElement(viewHolder: mainAdapter.ViewHolder) {
-        myshared = getSharedPreferences("shared", 0);
+    fun clearElement(viewHolder: mainAdapter.ViewHolder , name:String)
+    {
+
+
+        myshared = getSharedPreferences("shared", 0)
         var editor: SharedPreferences.Editor = myshared!!.edit();
 
         var myshared1 = getSharedPreferences("keyshared", 0)
         var editor1: SharedPreferences.Editor = myshared1!!.edit()
         //  MyApplication.globalvar?.remove(mycards[viewHolder.adapterPosition].name);
-        editor.remove(mycards[viewHolder.adapterPosition].name)
-        editor.commit()
+
+        Log.d("removing" , mycards[viewHolder.adapterPosition].name)
+        //editor.remove(mycards[viewHolder.adapterPosition].name)
+        //editor.commit()
 
         var value = myshared1.getString("keys", "not ofun")
         Log.d("valueBefore", value)
 
         //var l=mycards[viewHolder.adapterPosition].name+","
-        var newvalue: String = isSubstring(mycards[viewHolder.adapterPosition].name + ",", value.toString())
+        var newvalue: String = isSubstring(mycards[viewHolder.adapterPosition].name, value.toString())
 
-        Log.d("newvalue", newvalue)
+        Log.d("valuenew", newvalue)
 
         editor1.putString("keys", newvalue)
         editor1.commit()
         // Log.d("editor1",editor1.toString())
         //end some 3ak
-        (hs1_recycler.adapter as mainAdapter).removeItem(viewHolder)
+        (hs1_recycler.adapter as mainAdapter).removeItem(viewHolder , name)
+        //reload()
     }
 
     fun refresh() {
@@ -647,15 +666,15 @@ class mychallenges : AppCompatActivity() {
         //end habd gded --------------------
         total2.text = totalsum.toString()
 
-        var tot = totalnum?.times(5)
-        var progress = (totalrating.toInt()/ tot!!) *100
+        var tot = totalnum?.times(5f)
+        var progress = ((totalrating/ tot!!) *100).toInt()
 
         progressBar2.progress = progress
         percentage.text = progress.toString()
 
         hs1_recycler.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
 
-        hs1_recycler.adapter = mainAdapter(mycard_refresh, this, startdate)
+        hs1_recycler.adapter = mainAdapter(mycard_refresh, this, startdate , total2 ,totalrating, totalnum!!, "mychallenges",progressBar2,percentage)
     }
 
     //to remove a substring from given string
@@ -670,30 +689,57 @@ class mychallenges : AppCompatActivity() {
     }
 
 
-    fun isSubstring(s1: String, s2: String): String {
-        val M = s1.length
-        val N = s2.length
+    fun isSubstring(word: String, keys: String): String {
+        //first: split the keys to array
+        val strs = keys?.split(",")?.toTypedArray()
 
-        /* A loop to slide pat[] one by one */
+        //second: find the matching key
         var idx: Int = 0
-        for (i in 0..N - M) {
-            var j: Int
-
-            /* For current index i, check for
-            pattern match */
-            j = 0
-            while (j < M) {
-                if (s2[i + j] != s1[j])
-                    break
-                j++
-            }
-
-            if (j == M)
+        for (i in 0..strs.size-1) {
+            if (word == strs[i]) {
                 idx = i
+                break
+            }
         }
-        return s2.removeRange(idx, idx + s1.length)
 
+        //rebuild the string ignoring the matching key
+        var finalkeys = ""
+        for (i in 0..strs.size-1) {
+            if (i != idx && strs[i]!= "") {
+                finalkeys += strs[i] + ','
+            }
+        }
+
+        Log.d("valueb", keys)
+        Log.d("valueafter", finalkeys)
+        return finalkeys
     }
+
+
+
+//        val M = s1.length //to be cut
+//        val N = s2.length// all keys
+//
+//        /* A loop to slide pat[] one by one */
+//        var idx: Int = 0
+//        for (i in 0..N - M) {
+//            var j: Int
+//
+//            /* For current index i, check for
+//            pattern match */
+//            j = 0
+//            while (j < M) {
+//                if (s2[i + j] != s1[j])
+//                    break
+//                j++
+//            }
+//
+//            if (j == M)
+//                idx = i
+//        }
+//        return s2.removeRange(idx, idx + s1.length)
+
+ //  }
     /*****************very very very strong noitification part habd******************/
 
 
@@ -821,7 +867,9 @@ class mychallenges : AppCompatActivity() {
         }
 
         var valuesinOrder = temp?.split(",")?.toTypedArray()
-        Log.d("ydenela", valuesinOrder?.get(0).toString())
+
+        for (i in valuesinOrder)
+            Log.d("ydenela", i)
         //var data_back1:SharedPreferences =getSharedPreferences("shared" , 0)
         //keys = data_back1.all as MutableMap<String, String> // to get all shared variables
         //var v:Array<String> = arrayOf("الصلاوات الخمس","صيام رمضان")
@@ -830,6 +878,7 @@ class mychallenges : AppCompatActivity() {
             for (k in valuesinOrder!!) {
 
                 val strs = m[k]?.split(",")?.toTypedArray()
+                Log.d("elmapa",m[k].toString())
                 startdate = strs?.get(1).toString()
 
                 var rating = (strs?.get(2).toString() + "f").toFloat() / (strs?.get(5).toString()).toFloat()
@@ -913,7 +962,7 @@ class mychallenges : AppCompatActivity() {
         }
 
         var valuesinOrder = temp?.split(",")?.toTypedArray()
-        Log.d("ydenela", valuesinOrder?.get(0).toString())
+        //Log.d("ydenela", valuesinOrder?.get(0).toString())
         //var data_back1:SharedPreferences =getSharedPreferences("shared" , 0)
         //keys = data_back1.all as MutableMap<String, String> // to get all shared variables
         //var v:Array<String> = arrayOf("الصلاوات الخمس","صيام رمضان")
@@ -979,13 +1028,13 @@ class mychallenges : AppCompatActivity() {
 
         total2.text = totalsum.toString()
 
-        var tot = totalnum*5
-        var progress = (totalrating.toInt()/tot) *100
+        var tot = totalnum*5f
+        var progress = ((totalrating/tot) *100).toInt()
 
         progressBar2.progress = progress
         percentage.text = progress.toString()
         hs1_recycler.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
-        hs1_recycler.adapter = mainAdapter(mycart, this, startdate)
+        hs1_recycler.adapter = mainAdapter(mycart, this, startdate,total2,totalrating , totalnum , "mychallenges",progressBar2,percentage)
     }
 
 

@@ -11,6 +11,8 @@ import android.support.v7.widget.helper.ItemTouchHelper
 import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
+import android.widget.ProgressBar
+import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_engazat.*
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -68,10 +70,10 @@ class engazat : AppCompatActivity() {
 
         if(m.isNotEmpty())
         {
-            for (k in valuesinOrder!!)
+            for ((k,v) in m)
             {
 
-                val strs = m[k]?.split(",")?.toTypedArray()
+                val strs = v.split(",")?.toTypedArray()
 
                 totalSum+=strs?.get(1).toString().toInt()
 
@@ -92,8 +94,10 @@ class engazat : AppCompatActivity() {
 
         total.text = totalSum.toString()
 
+
+
         engazaty_recycler.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL,false)
-        engazaty_recycler.adapter = mainAdapter(mycards,this,"")
+        engazaty_recycler.adapter = mainAdapter(mycards,this,"",total,0f,0,"engazat", progressBar3, total)
 
 
         val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
@@ -137,7 +141,10 @@ class engazat : AppCompatActivity() {
         editor1.clear()
         editor1.commit()
         val mycards = ArrayList<dataHabits>()
-        engazaty_recycler.adapter = mainAdapter(mycards,this,"")
+
+        val progress: ProgressBar? = null
+        val percentage: TextView? = null
+        engazaty_recycler.adapter = mainAdapter(mycards,this,"",total ,0f,0,"engazat", progressBar3, total)
         deleteall_but.visibility = View.INVISIBLE
     }
 //
@@ -170,28 +177,8 @@ class engazat : AppCompatActivity() {
 
     fun clearElement(viewHolder:mainAdapter.ViewHolder)
     {
-        myshared = getSharedPreferences("shared_engaz" , 0)
-        var editor: SharedPreferences.Editor = myshared!!.edit()
 
-        var  myshared1 = getSharedPreferences("keyshared_engaz" , 0)
-        var editor1: SharedPreferences.Editor = myshared1!!.edit()
-        //  MyApplication.globalvar?.remove(mycards[viewHolder.adapterPosition].name);
-        editor.remove(mycards[viewHolder.adapterPosition].name)
-        editor.commit()
-
-        var value = myshared1.getString("keys","not ofun")
-        Log.d("valueBefore" , value)
-
-        //var l=mycards[viewHolder.adapterPosition].name+","
-        var newvalue:String = isSubstring(mycards[viewHolder.adapterPosition].name+"," , value)
-
-        Log.d("newvalue", newvalue)
-
-        editor1.putString("keys",newvalue)
-        editor1.commit()
-        // Log.d("editor1",editor1.toString())
-        //end some 3ak
-        (engazaty_recycler.adapter as mainAdapter).removeItem(viewHolder)
+        (engazaty_recycler.adapter as mainAdapter).removeItem(viewHolder,"engaz")
     }
 
 
@@ -249,8 +236,12 @@ class engazat : AppCompatActivity() {
             deleteall_but.visibility = View.INVISIBLE
         }
 
+        val progress: ProgressBar? = null
+        val percentage: TextView? = null
+
+
         engazaty_recycler.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL,false)
-        engazaty_recycler.adapter = mainAdapter(mycart,this,"")
+        engazaty_recycler.adapter = mainAdapter(mycart,this,"",total,0f,0,"engazat", progressBar3, total)
     }
 }
 

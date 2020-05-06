@@ -19,13 +19,19 @@ import kotlinx.android.synthetic.main.curr_habits.view.*
 
 import android.widget.CheckBox
 import org.w3c.dom.Text
+import java.text.SimpleDateFormat
 
 
-class mainAdapter (val input: ArrayList<dataHabits>,var ctx: Context,var startdate:String) : RecyclerView.Adapter<mainAdapter.ViewHolder>()
+class mainAdapter (val input: ArrayList<dataHabits>,var ctx: Context,var startdate:String , var totalcoins: TextView
+                    , var totalrating:Float , var numCards:Int, var activityname:String
+                    ,var progress:ProgressBar , var percentage:TextView) : RecyclerView.Adapter<mainAdapter.ViewHolder>()
 {
 
     var prefrences =this.ctx.getSharedPreferences("shared",0)
+    var mychallenges_context = this.ctx
     var editor: SharedPreferences.Editor = prefrences!!.edit()
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): mainAdapter.ViewHolder {
         val v=LayoutInflater.from(parent.context).inflate(R.layout.curr_habits,parent,false)
@@ -65,28 +71,42 @@ class mainAdapter (val input: ArrayList<dataHabits>,var ctx: Context,var startda
 
                 if (myCheckBox.isChecked)
                 {
+                    if(activityname != "engazat")
+                    {
+                        //var myshared :SharedPreferences = context.getSharedPreferences("shared" , 0)
+                        Log.d("in adapter","reached")
+                        var Coinnewvalue:Int = holder.numcoins.text.toString().toInt() + 5
+                        //var myglobal = MyApplication() // to use global variable
+                        MyApplication.checked = 1
+                        Log.d("aywa ana true",MyApplication.checked.toString())
+                        holder.numcoins.text = Coinnewvalue.toString()
+                        holder.check.isChecked = true
+                        var numdays_separated=data.numdays?.split("/")?.toTypedArray()
+                        var ratingnew:Float = (Coinnewvalue.toString()+"f").toFloat()/numdays_separated[1].toFloat()
 
-                    //var myshared :SharedPreferences = context.getSharedPreferences("shared" , 0)
-                    Log.d("in adapter","reached")
-                    var Coinnewvalue:Int = holder.numcoins.text.toString().toInt() + 5
-                    //var myglobal = MyApplication() // to use global variable
-                    MyApplication.checked = 1
-                    Log.d("aywa ana true",MyApplication.checked.toString())
-                    holder.numcoins.text = Coinnewvalue.toString()
-                    holder.check.isChecked = true
-                    var numdays_separated=data.numdays?.split("/")?.toTypedArray()
-                    var ratingnew:Float = (Coinnewvalue.toString()+"f").toFloat()/numdays_separated[1].toFloat()
-                    holder.ratingbar.rating = ratingnew
-                   // MyApplication?.globalvar = mutableMapOf(Pair(data.name, Pair(holder.check.isChecked.toString(),Coinnewvalue.toString())))
-                    editor.putString(data.name, data.name + ","
-                            + startdate+ ","
-                            + Coinnewvalue + ","
-                            + holder.ratingbar.rating + ","
-                            + holder.check.isChecked + "," + numdays_separated[1])
-                    editor.commit()
+                        //step 1
+                        totalrating = totalrating - holder.ratingbar.rating + ratingnew
+
+                        //step 2
+                        progress.progress = ((totalrating / (numCards*5)) *100).toInt()
+                        percentage.text = ((totalrating / (numCards*5)) *100).toInt().toString()
+
+                        //step 3
+                        totalcoins.text = (totalcoins.text.toString().toInt() + 5).toString()
+
+                        holder.ratingbar.rating = ratingnew
+                        // MyApplication?.globalvar = mutableMapOf(Pair(data.name, Pair(holder.check.isChecked.toString(),Coinnewvalue.toString())))
+                        editor.putString(data.name, data.name + ","
+                                + startdate+ ","
+                                + Coinnewvalue + ","
+                                + holder.ratingbar.rating + ","
+                                + holder.check.isChecked + "," + numdays_separated[1])
+                        editor.commit()
 
 
-                    Log.d("m in adapter","3mlt t3del 5las")
+                        Log.d("m in adapter","3mlt t3del 5las")
+                    }
+
                     //myglobal.s = "omar hatem"
                     //myglobal.checked = 1
                     //var dayprec:String=
@@ -100,19 +120,34 @@ class mainAdapter (val input: ArrayList<dataHabits>,var ctx: Context,var startda
                 }
                 else if (!myCheckBox.isChecked)
                 {
-                    var Coinnewvalue:Int = holder.numcoins.text.toString().toInt() - 5
-                    var myglobal = MyApplication() // to use global variable
-                    holder.numcoins.text = Coinnewvalue.toString()
-                    holder.check.isChecked = false
-                    var numdays_separated=data.numdays?.split("/")?.toTypedArray()
-                    var ratingnew:Float = (Coinnewvalue.toString()+"f").toFloat()/numdays_separated[1].toFloat()
-                    holder.ratingbar.rating = ratingnew
-                    editor.putString(data.name, data.name + ","
-                            + startdate+ ","
-                            + Coinnewvalue + ","
-                            + holder.ratingbar.rating + ","
-                            + holder.check.isChecked + "," + numdays_separated[1])
-                    editor.commit()
+                    if(activityname != "engazat")
+                    {
+                        var Coinnewvalue:Int = holder.numcoins.text.toString().toInt() - 5
+                        var myglobal = MyApplication() // to use global variable
+                        holder.numcoins.text = Coinnewvalue.toString()
+                        holder.check.isChecked = false
+                        var numdays_separated=data.numdays?.split("/")?.toTypedArray()
+                        var ratingnew:Float = (Coinnewvalue.toString()+"f").toFloat()/numdays_separated[1].toFloat()
+
+                        //step 1
+                        totalrating = totalrating - holder.ratingbar.rating + ratingnew
+
+                        //step 2
+                        progress.progress = ((totalrating / (numCards*5)) *100).toInt()
+                        percentage.text = ((totalrating / (numCards*5)) *100).toInt().toString()
+
+                        //step 3
+                        totalcoins.text = (totalcoins.text.toString().toInt() - 5).toString()
+
+                        holder.ratingbar.rating = ratingnew
+                        editor.putString(data.name, data.name + ","
+                                + startdate+ ","
+                                + Coinnewvalue + ","
+                                + holder.ratingbar.rating + ","
+                                + holder.check.isChecked + "," + numdays_separated[1])
+                        editor.commit()
+                    }
+
                 }
             }
         })
@@ -173,15 +208,119 @@ class mainAdapter (val input: ArrayList<dataHabits>,var ctx: Context,var startda
     }
 
 
-    fun removeItem(viewHolder:RecyclerView.ViewHolder)
+    fun removeItem(viewHolder:RecyclerView.ViewHolder , name:String)
     {
-        MyApplication.keyname = input[viewHolder.adapterPosition].name
+
+        if(name == "engaz")
+        {
+            var myshared_engaz = this.ctx.getSharedPreferences("shared_engaz", 0)
+
+           // var myshared1_engaz = this.ctx.getSharedPreferences("keyshared_engaz", 0)
+
+            var editor_engaz: SharedPreferences.Editor = myshared_engaz!!.edit()
+           // var editor1_engaz: SharedPreferences.Editor = myshared1_engaz!!.edit()
+
+            // var card = mycards[viewHolder.adapterPosition] //card to be added in engazat
+            //Log.d("you", card.name)
+
+            var databack = this.ctx.getSharedPreferences("shared", 0)
+          //  var databack1 = this.ctx.getSharedPreferences("keyshared", 0)
+
+            var last_num = (myshared_engaz.all.size + 1).toString()  // store the keys of engazat as 1,2,3,4 .....
+
+
+            var v = databack.getString(input[viewHolder.adapterPosition].name, "toz")
+
+            val strs = v?.split(",")?.toTypedArray()
+            Log.d("array:", strs?.get(0).toString())
+
+            //var diff = calc_day(strs?.get(1).toString(), input[viewHolder.adapterPosition].name)
+
+            Log.d("numcoinsandrating", v.toString())
+
+            var card = input[viewHolder.adapterPosition]
+
+
+            Log.d("cardcoin",card.numofcoins )
+            Log.d("cardrating",card.rating.toString())
+            //hena 8yart
+            editor_engaz.putString(last_num, card.name + "," + card.numofcoins + "," +card.numdays + "," + card.rating)
+            editor_engaz.commit()
+
+
+
+            var temp = ("keyshared_engaz")
+            if (temp == null)
+                temp = last_num + ","
+            else temp = temp + last_num + ","
+           // editor1_engaz.putString("keys", temp)
+           // editor1_engaz.commit()
+        }
+
+
+
         Log.d("item to remove", input[viewHolder.adapterPosition].name)
+
+        //remove item from shared preferences
+        var myshared = this.ctx.getSharedPreferences("shared",0)
+        var editor: SharedPreferences.Editor = myshared!!.edit()
+
+
+        Log.d("removing" ,input[viewHolder.adapterPosition].name)
+        editor.remove(input[viewHolder.adapterPosition].name)
+        editor.commit()
+
+
+
+        //removing from recycler view
         input.removeAt(viewHolder.adapterPosition)
         notifyItemRemoved(viewHolder.adapterPosition)
     }
 
 
+
+    /**********************************/
+    fun calc_day(startdate_String: String, name: String): Long {
+        val myFormat = SimpleDateFormat("dd MM yyyy")
+        val inputString1 = get_correct_format(startdate_String)
+        val inputString2 = get_correct_format(java.util.Calendar.getInstance().time.toString())
+
+
+        val date1 = myFormat.parse(inputString1)
+        val date2 = myFormat.parse(inputString2)
+        val diff = (date2.time - date1.time) / (1000 * 3600 * 24)
+        //System.out.println("Days: " + TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS))
+
+        val seven: Long = 7
+        if (name == "صيام الخميس" || name == "صيام الاثنين" || name == "صلاة الجمعة علي وقتها") {
+            var result = diff.toInt() / 7
+            if (diff < 7.toLong()) return (result + 1).toLong()
+            else if (diff.toInt() % 7 == 0) {
+                Log.d("diffnew", result.toString())
+                Log.d("diffnfsaha", diff.toString())
+                return (result + 1).toLong()
+            }
+
+            return result.toLong()
+        }
+
+        return diff + 1
+    }
+
+
+    fun get_correct_format(s: String): String {
+        var m: MutableMap<String, String> = mutableMapOf("Jan" to "01", "Feb" to "02", "Mar" to "03",
+                "Apr" to "04", "May" to "05", "Jun" to "06", "Jul" to "07", "Aug" to "08", "Sep" to "09",
+                "Oct" to "10", "Nov" to "11", "Dec" to "12")
+        var temp = s?.split(" ")?.toTypedArray()
+        var res: String = ""
+        // Log.d("temp[2]" , temp[2])
+        res += temp[2] + " " + m[temp[1]] + " " + temp[temp.size - 1]
+        return res
+
+    }
+
+    /********************************/
 
 
 }
