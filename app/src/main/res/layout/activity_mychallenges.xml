@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -45,13 +45,13 @@
         android:textColor="@android:color/background_light"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/deleteall_but"
+        app:layout_constraintBottom_toBottomOf="@+id/activityEngazatDeleteAllEngazatButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/deleteall_but"
+        app:layout_constraintTop_toTopOf="@+id/activityEngazatDeleteAllEngazatButton"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/deleteall_but"
+        android:id="@+id/activityEngazatDeleteAllEngazatButton"
         android:layout_width="87dp"
         android:layout_height="31dp"
 
@@ -68,7 +68,7 @@
         app:layout_constraintTop_toBottomOf="@+id/progressBar2" />
 
     <TextView
-        android:id="@+id/name2"
+        android:id="@+id/activityEngazatEngazatiTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -81,10 +81,10 @@
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView8"
-        app:layout_constraintTop_toBottomOf="@+id/name3" />
+        app:layout_constraintTop_toBottomOf="@+id/activityEngazatBifadlillahiTv" />
 
     <TextView
-        android:id="@+id/name3"
+        android:id="@+id/activityEngazatBifadlillahiTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -98,7 +98,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/hs1_recycler"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -107,7 +107,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/deleteall_but" />
+        app:layout_constraintTop_toBottomOf="@+id/activityEngazatDeleteAllEngazatButton" />
 
     <ImageView
         android:id="@+id/imageView8"
@@ -115,10 +115,10 @@
         android:layout_height="50dp"
         android:layout_marginStart="23dp"
         android:layout_marginEnd="32dp"
-        app:layout_constraintBottom_toBottomOf="@+id/name2"
-        app:layout_constraintEnd_toStartOf="@+id/name2"
+        app:layout_constraintBottom_toBottomOf="@+id/activityEngazatEngazatiTv"
+        app:layout_constraintEnd_toStartOf="@+id/activityEngazatEngazatiTv"
         app:layout_constraintStart_toEndOf="@+id/imageView10"
-        app:layout_constraintTop_toTopOf="@+id/name2"
+        app:layout_constraintTop_toTopOf="@+id/activityEngazatEngazatiTv"
         app:srcCompat="@drawable/gear" />
 
     <ImageView
@@ -145,4 +145,4 @@
         app:layout_constraintEnd_toEndOf="@+id/progressBar2"
         app:layout_constraintStart_toStartOf="@+id/progressBar2"
         app:layout_constraintTop_toTopOf="@+id/progressBar2" />
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
