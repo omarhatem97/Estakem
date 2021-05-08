@@ -2,9 +2,9 @@ package com.example.islamics.estakem.ui
 
 import android.content.Intent
 import android.content.SharedPreferences
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.example.islamics.estakem.R
 import kotlinx.android.synthetic.main.activity_sala.*
 import java.util.*
@@ -67,7 +67,7 @@ class SalaActivity : AppCompatActivity() {
                         "الغارمين: أي المدينين. الجهاد في سبيل الله: كالمقاتلين في سبيل الله، وما يحتاجون إليه من سلاح وقوت ونحوه.\n" +
                         " ابن السبيل: هو من نفذت نفقته وانقطع به سفره\n"
 
-                name_text.visibility = View.INVISIBLE
+                activityTarkZanbActivityName.visibility = View.INVISIBLE
                 numofdays.visibility = View.INVISIBLE
                 start_but.visibility = View.INVISIBLE
             }
@@ -181,7 +181,7 @@ class SalaActivity : AppCompatActivity() {
                         "\n" +
                         "حجاج بيت الله الحرام وصيام يوم عرفة:\n \n" +
                         "وجاء فى \"بدائع الصنائع فى ترتيب الشرائع\" : [ وأما صوم يوم عرفة: ففى حق غير الحاج مستحب؛ لكثرة الأحاديث الواردة بالندب إلى صومه، ولأن له فضيلة على غيره من الأيام، وكذلك فى حق الحاج أن كان لا يضعفه عن الوقوف والدعاء؛ لما فيه من الجمع بين القربتين، وإن كان يضعفه عن ذلك يكره؛ لأن فضيلة صوم هذا اليوم مما يمكن استدراكها فى غير هذه السنة ]"
-                name_text.visibility = View.INVISIBLE
+                activityTarkZanbActivityName.visibility = View.INVISIBLE
                 numofdays.visibility = View.INVISIBLE
                 start_but.visibility = View.INVISIBLE
 
@@ -190,7 +190,7 @@ class SalaActivity : AppCompatActivity() {
                 definition.text = "يعتبر اليوم العاشر من شهر محرّم هو يوم عاشوراء عند المسلمين، وهو من الأيّام المستحبّ صيامها عند أكثر أهل العلم، وقد ورد في ذلك الكثير من الأحاديث التي تذكر فضل يوم عاشوراء وأجر صيامه، وسنذكر في هذا المقال سبب صيام المسلمين ليوم عاشوراء، وفضل ذلك عند الله سبحانه وتعالى.\n" +
                         "فقد روى البخاري ومسلم عن ابن عباس رضي الله عنهما قال: (قدم النّبي - صلّى الله عليه وسلّم - المدينة فرأى اليهود تصوم يوم عاشوراء، فقال: ما هذا؟ قالوا: هذا يوم صالح، هذا يوم نجّى الله بني إسرائيل من عدوّهم، فصامه موسى - عند مسلم شكراً - فقال رسول الله صلّى الله عليه وسلّم: فأنا أحقّ بموسى منكم، فصامه وأمر بصيامه). (3) وعن عائشة رضي الله عنها قالت: (كان يوم عاشوراء يوماً تصومه قريش في الجاهلية، وكان رسول الله - صلّى الله عليه وسلّم - يصومه، فلمّا قدم المدينة صامه، وأمر النّاس بصيامه، فلمّا فرض رمضان قال: من شاء صامه ومن شاء تركه) رواه البخاري ومسلم ، وعن معاوية بن أبي سفيان رضي الله عنه قال: سمعت رسول الله - صلّى الله عليه وسلّم - يقول: (إنّ هذا يوم عاشوراء، ولم يكتب عليكم صيامه، وأنا صائم فمن شاء صام، ومن شاء فليفطر) رواه البخاري ومسلم .\n"
 
-                name_text.visibility = View.INVISIBLE
+                activityTarkZanbActivityName.visibility = View.INVISIBLE
                 numofdays.visibility = View.INVISIBLE
                 start_but.visibility = View.INVISIBLE
             }

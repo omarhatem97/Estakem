@@ -1,9 +1,10 @@
 package com.example.islamics.estakem.ui
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
 import android.widget.LinearLayout
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.islamics.estakem.ui.adapter.FaraedCustomAdapter
 import com.example.islamics.estakem.ui.data.FaraedData
 import com.example.islamics.estakem.R
@@ -27,7 +28,7 @@ class SonanMahgoraActivity : AppCompatActivity() {
 
 
 
-        sonan_recycler.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL,false)
+        sonan_recycler.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL,false)
         val adapter = FaraedCustomAdapter(frayed)
         sonan_recycler.adapter = adapter
 

@@ -1,11 +1,9 @@
 package com.example.islamics.estakem.ui
 
-import android.content.SharedPreferences
-import android.content.res.ColorStateList
 import android.graphics.Color
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.example.islamics.estakem.R
 import kotlinx.android.synthetic.main.activity_review.*
 
@@ -15,10 +13,10 @@ class ReviewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_review)
         fun Double.format(digits: Int) = "%.${digits}f".format(this)
-        var nameinrev:String? = intent.extras.getString("fareda_name")
-        var coinsinrev:String? = intent.extras.getString("fareda_numofcoins")
-        var daysinrev:String? = intent.extras.getString("fareda_numdays")
-        var ratinginrev:String? = intent.extras.getString("fareda_rating")
+        var nameinrev:String? = intent.extras?.getString("fareda_name")
+        var coinsinrev:String? = intent.extras?.getString("fareda_numofcoins")
+        var daysinrev:String? = intent.extras?.getString("fareda_numdays")
+        var ratinginrev:String? = intent.extras?.getString("fareda_rating")
         var numdays_separated=daysinrev?.split("/")?.toTypedArray()
 
         var new_progress:Float = (coinsinrev.toString()+"f").toFloat()/ ((numdays_separated?.get(1)).toString().toFloat())
@@ -36,8 +34,8 @@ class ReviewActivity : AppCompatActivity() {
         myvalue.text=num_of_checked_days.toString()+" /"
 
         if(nameinrev == "صيام الخميس" || nameinrev == "صيام الاثنين" || nameinrev == "صلاة الجمعة علي وقتها")
-            total.text = "أسبوع   "+(numdays_separated?.get(1))
-        else total.text = "أيام   "+(numdays_separated?.get(1))
+            activityEngazatTotalTv.text = "أسبوع   "+(numdays_separated?.get(1))
+        else activityEngazatTotalTv.text = "أيام   "+(numdays_separated?.get(1))
 
                 // el kalam elle hytketeb
         if(progress_as_int < 75 )

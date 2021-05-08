@@ -9,20 +9,19 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Build
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.app.NotificationCompat
-import android.support.v7.app.AlertDialog
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.helper.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
 import android.view.View
-import android.widget.LinearLayout
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.islamics.estakem.*
 import com.example.islamics.estakem.ui.adapter.MainAdapter
 import com.example.islamics.estakem.ui.data.HabitsData
-import kotlinx.android.synthetic.main.activity_engazat.deleteall_but
+import kotlinx.android.synthetic.main.activity_engazat.activityEngazatDeleteAllEngazatButton
 import kotlinx.android.synthetic.main.activity_mychallenges.*
 
 
@@ -32,7 +31,6 @@ class MyChallengesActivity : AppCompatActivity() {
 
     var myshared: SharedPreferences? = null
     val mycards = ArrayList<HabitsData>() // cards to be shown in homepage
-    var context: Context = this
     var startdate: String = " "
 
 
@@ -43,7 +41,7 @@ class MyChallengesActivity : AppCompatActivity() {
 
 
     override fun onBackPressed() {
-        val intent = Intent(context, MainActivity::class.java)
+        val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
 
@@ -79,7 +77,7 @@ class MyChallengesActivity : AppCompatActivity() {
         var editor: SharedPreferences.Editor = myshared!!.edit()
 
 
-        deleteall_but.setOnClickListener {
+        activityEngazatDeleteAllEngazatButton.setOnClickListener {
 
             val builder = AlertDialog.Builder(this)
             builder.setTitle("مسح الكل!")
@@ -223,16 +221,16 @@ class MyChallengesActivity : AppCompatActivity() {
 
         if (thestring != null) {
             if (thestring.length > 0)
-                temp = thestring?.substring(0, thestring.length - 1)
+                temp = thestring.substring(0, thestring.length - 1)
         }
 
-        val valuesinOrder = temp?.split(",")?.toTypedArray()
+        val valuesinOrder = temp.split(",").toTypedArray()
 
         var totalsum = 0
         var totalrating = 0f
         var totalnum = valuesinOrder.size
         if (m.isNotEmpty()) {
-            for (k in valuesinOrder!!) {
+            for (k in valuesinOrder) {
 
                 val strs = m[k]?.split(",")?.toTypedArray()
 
@@ -280,7 +278,7 @@ class MyChallengesActivity : AppCompatActivity() {
         } else {
 
             tanshet.visibility = View.INVISIBLE
-            deleteall_but.visibility = View.INVISIBLE
+            activityEngazatDeleteAllEngazatButton.visibility = View.INVISIBLE
         }
 
 
@@ -292,7 +290,7 @@ class MyChallengesActivity : AppCompatActivity() {
         progressBar2.progress = progress
         percentage.text = progress.toString()
 
-        hs1_recycler.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
+        hs1_recycler.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         hs1_recycler.adapter = MainAdapter(mycards, this, startdate,total2 ,totalrating, totalnum, "mychallenges",progressBar2,percentage)
 
         val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
@@ -307,14 +305,15 @@ class MyChallengesActivity : AppCompatActivity() {
 
     val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
 
-        override fun onMove(recyclerView: RecyclerView?, viewHolder: RecyclerView.ViewHolder?, target: RecyclerView.ViewHolder?): Boolean {
+
+        override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
             return false
         }
 
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
             //some 3ak
 
-            val builder = AlertDialog.Builder(context)
+            val builder = AlertDialog.Builder(this@MyChallengesActivity)
             builder.setTitle("مسح التحدي؟")
             builder.setMessage("هل ترغب بمسح هذا التحدي ؟")
             builder.setPositiveButton("نعم", { dialogInterface, i -> clearElement(viewHolder as MainAdapter.ViewHolder,"") })
@@ -435,10 +434,10 @@ class MyChallengesActivity : AppCompatActivity() {
 
         var editor: SharedPreferences.Editor = myshared!!.edit()
         val currdate: String = get_correct_format(java.util.Calendar.getInstance().time.toString())
-        var day = currdate?.split(" ")?.toTypedArray()
+        var day = currdate.split(" ").toTypedArray()
 
         Log.d("day in remove", day[0])
-        Log.d("lasday", data_back.getString("lastday", "bs b21a"))
+        //Log.d("lasday", data_back.getString("lastday", "bs b21a"))
 
         var m: MutableMap<String, String>
         m = data_back.all as MutableMap<String, String>
@@ -457,7 +456,7 @@ class MyChallengesActivity : AppCompatActivity() {
             var myshared2: SharedPreferences = getSharedPreferences("shared", 0)
 
 
-            var editorr: SharedPreferences.Editor = myshared2!!.edit()
+            var editorr: SharedPreferences.Editor = myshared2.edit()
             var databack = getSharedPreferences("shared", 0)
 
 
@@ -493,7 +492,7 @@ class MyChallengesActivity : AppCompatActivity() {
         var m: MutableMap<String, String> = mutableMapOf("Jan" to "01", "Feb" to "02", "Mar" to "03",
                 "Apr" to "04", "May" to "05", "Jun" to "06", "Jul" to "07", "Aug" to "08", "Sep" to "09",
                 "Oct" to "10", "Nov" to "11", "Dec" to "12")
-        var temp = s?.split(" ")?.toTypedArray()
+        var temp = s.split(" ").toTypedArray()
         var res: String = ""
         // Log.d("temp[2]" , temp[2])
         res += temp[2] + " " + m[temp[1]] + " " + temp[temp.size - 1]
@@ -549,7 +548,7 @@ class MyChallengesActivity : AppCompatActivity() {
         //make button and text invisible
 
         tanshet.visibility = View.INVISIBLE
-        deleteall_but.visibility = View.INVISIBLE
+        activityEngazatDeleteAllEngazatButton.visibility = View.INVISIBLE
         progressBar2.progress = 0
         percentage.text = "0 %"
     }
@@ -560,7 +559,7 @@ class MyChallengesActivity : AppCompatActivity() {
 
 
         myshared = getSharedPreferences("shared", 0)
-        var editor: SharedPreferences.Editor = myshared!!.edit();
+        var editor: SharedPreferences.Editor = myshared!!.edit()
 
         var myshared1 = getSharedPreferences("keyshared", 0)
         var editor1: SharedPreferences.Editor = myshared1!!.edit()
@@ -571,7 +570,7 @@ class MyChallengesActivity : AppCompatActivity() {
         //editor.commit()
 
         var value = myshared1.getString("keys", "not ofun")
-        Log.d("valueBefore", value)
+        //Log.d("valueBefore", value)
 
         //var l=mycards[viewHolder.adapterPosition].name+","
         var newvalue: String = isSubstring(mycards[viewHolder.adapterPosition].name, value.toString())
@@ -673,7 +672,7 @@ class MyChallengesActivity : AppCompatActivity() {
         progressBar2.progress = progress
         percentage.text = progress.toString()
 
-        hs1_recycler.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
+        hs1_recycler.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
 
         hs1_recycler.adapter = MainAdapter(mycard_refresh, this, startdate , total2 ,totalrating, totalnum!!, "mychallenges",progressBar2,percentage)
     }
@@ -692,7 +691,7 @@ class MyChallengesActivity : AppCompatActivity() {
 
     fun isSubstring(word: String, keys: String): String {
         //first: split the keys to array
-        val strs = keys?.split(",")?.toTypedArray()
+        val strs = keys.split(",").toTypedArray()
 
         //second: find the matching key
         var idx: Int = 0
@@ -748,7 +747,7 @@ class MyChallengesActivity : AppCompatActivity() {
 
     fun omar(notificationId: Int) {
 
-        var notification_manager: NotificationManager = this.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager;
+        var notification_manager: NotificationManager = this.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         var chanel_id: String = "3000"
         var name: CharSequence = "Channel Name"
@@ -757,9 +756,9 @@ class MyChallengesActivity : AppCompatActivity() {
         var notification_builder = null
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             var mChannel: NotificationChannel = NotificationChannel(chanel_id, name, importance)
-            mChannel.setDescription(description)
+            mChannel.description = description
             mChannel.enableLights(true)
-            mChannel.setLightColor(Color.BLUE)
+            mChannel.lightColor = Color.BLUE
             notification_manager.createNotificationChannel(mChannel)
             var notification_builder = NotificationCompat.Builder(this, chanel_id)
 
@@ -864,10 +863,10 @@ class MyChallengesActivity : AppCompatActivity() {
 
         if (thestring != null) {
             if (thestring.length > 0)
-                temp = thestring?.substring(0, thestring.length - 1)
+                temp = thestring.substring(0, thestring.length - 1)
         }
 
-        var valuesinOrder = temp?.split(",")?.toTypedArray()
+        var valuesinOrder = temp.split(",").toTypedArray()
 
         for (i in valuesinOrder)
             Log.d("ydenela", i)
@@ -876,7 +875,7 @@ class MyChallengesActivity : AppCompatActivity() {
         //var v:Array<String> = arrayOf("الصلاوات الخمس","صيام رمضان")
         // var rating:Float
         if (m.isNotEmpty()) {
-            for (k in valuesinOrder!!) {
+            for (k in valuesinOrder) {
 
                 val strs = m[k]?.split(",")?.toTypedArray()
                 Log.d("elmapa",m[k].toString())
@@ -959,10 +958,10 @@ class MyChallengesActivity : AppCompatActivity() {
 
         if (thestring != null) {
             if (thestring.length > 0)
-                temp = thestring?.substring(0, thestring.length - 1)
+                temp = thestring.substring(0, thestring.length - 1)
         }
 
-        var valuesinOrder = temp?.split(",")?.toTypedArray()
+        var valuesinOrder = temp.split(",").toTypedArray()
         //Log.d("ydenela", valuesinOrder?.get(0).toString())
         //var data_back1:SharedPreferences =getSharedPreferences("shared" , 0)
         //keys = data_back1.all as MutableMap<String, String> // to get all shared variables
@@ -973,7 +972,7 @@ class MyChallengesActivity : AppCompatActivity() {
         var totalrating = 0f
         var totalnum = valuesinOrder.size
         if (m.isNotEmpty()) {
-            for (k in valuesinOrder!!) {
+            for (k in valuesinOrder) {
 
                 val strs = m[k]?.split(",")?.toTypedArray()
                 startdate = strs?.get(1).toString()
@@ -1024,7 +1023,7 @@ class MyChallengesActivity : AppCompatActivity() {
         } else {
 
             tanshet.visibility = View.INVISIBLE
-            deleteall_but.visibility = View.INVISIBLE
+            activityEngazatDeleteAllEngazatButton.visibility = View.INVISIBLE
         }
 
         total2.text = totalsum.toString()
@@ -1034,7 +1033,7 @@ class MyChallengesActivity : AppCompatActivity() {
 
         progressBar2.progress = progress
         percentage.text = progress.toString()
-        hs1_recycler.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
+        hs1_recycler.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         hs1_recycler.adapter = MainAdapter(mycart, this, startdate,total2,totalrating , totalnum , "mychallenges",progressBar2,percentage)
     }
 

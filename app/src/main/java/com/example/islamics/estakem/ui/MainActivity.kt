@@ -8,15 +8,12 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
-
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.app.NotificationCompat
-import android.support.v7.widget.CardView
 import android.util.Log
-
-
 import android.widget.GridLayout
+import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
+import androidx.core.app.NotificationCompat
 import com.example.islamics.estakem.MyNotificationPublisher
 import com.example.islamics.estakem.R
 import kotlinx.android.synthetic.main.activity_main.*
@@ -43,7 +40,7 @@ class MainActivity : AppCompatActivity()
 
 
         val grid = mainGrid as GridLayout
-        val childCount = grid.getChildCount()
+        val childCount = grid.childCount
 
         for (i in 0 until childCount) {
             val container = grid.getChildAt(i) as CardView
@@ -103,7 +100,7 @@ class MainActivity : AppCompatActivity()
     fun omar(notificationId: Int)
     {
 
-        var notification_manager: NotificationManager =  this.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager;
+        var notification_manager: NotificationManager =  this.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         var chanel_id:String = "3000"
         var name:CharSequence = "Channel Name"
@@ -113,9 +110,9 @@ class MainActivity : AppCompatActivity()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
         {
             var mChannel: NotificationChannel = NotificationChannel(chanel_id, name, importance)
-            mChannel.setDescription(description)
+            mChannel.description = description
             mChannel.enableLights(true)
-            mChannel.setLightColor(Color.BLUE)
+            mChannel.lightColor = Color.BLUE
             notification_manager.createNotificationChannel(mChannel)
             var notification_builder = NotificationCompat.Builder(this, chanel_id)
 
@@ -199,7 +196,7 @@ class MainActivity : AppCompatActivity()
 
     fun isSubstring(word: String, keys: String): String {
         //first: split the keys to array
-        val strs = keys?.split(",")?.toTypedArray()
+        val strs = keys.split(",").toTypedArray()
 
         //second: find the matching key
         var idx: Int = 0

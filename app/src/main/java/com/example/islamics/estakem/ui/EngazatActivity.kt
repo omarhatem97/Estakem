@@ -2,17 +2,16 @@ package com.example.islamics.estakem.ui
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.helper.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
 import android.view.View
-import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.islamics.estakem.ui.data.HabitsData
 import com.example.islamics.estakem.ui.adapter.MainAdapter
 import com.example.islamics.estakem.MyApplication
@@ -31,13 +30,13 @@ class EngazatActivity : AppCompatActivity() {
         setContentView(R.layout.activity_engazat)
 
 
-        deleteall_but.setOnClickListener {
+        activityEngazatDeleteAllEngazatButton.setOnClickListener {
 
             val builder = AlertDialog.Builder(this)
             builder.setTitle("مسح الكل!")
             builder.setMessage("هل حقا تود بمسح جميع الإنجازات الحالية ؟")
-            builder.setPositiveButton("نعم",{dialogInterface, i ->clearAll()  })
-            builder.setNegativeButton("لا",{dialogInterface, i ->})
+            builder.setPositiveButton("نعم") { _, _ -> clearAll() }
+            builder.setNegativeButton("لا") { _, _ -> }
             builder.show()
 
         }
@@ -45,13 +44,12 @@ class EngazatActivity : AppCompatActivity() {
 
         //display the recycler view from the engazat shared prefrences
 
-        var databack = getSharedPreferences("shared_engaz", 0)
+        val databack = getSharedPreferences("shared_engaz", 0)
         var databack1 = getSharedPreferences("keyshared_engaz", 0) // to get back the keys
 
         //val mycards = ArrayList<dataHabits>()
         //the recyclerview
-        var m: MutableMap<String,String>
-        m = databack.all as MutableMap<String, String>
+        val m: MutableMap<String,String> = databack.all as MutableMap<String, String>
 
 //        var keys: MutableMap<String,String> = databack1.all as MutableMap<String, String>
 //        Log.d("el keys",keys.toString())
@@ -76,35 +74,35 @@ class EngazatActivity : AppCompatActivity() {
             for ((k,v) in m)
             {
 
-                val strs = v.split(",")?.toTypedArray()
+                val strs = v.split(",").toTypedArray()
 
-                totalSum+=strs?.get(1).toString().toInt()
+                totalSum+= strs.get(1).toString().toInt()
 
-                var tocheck = strs?.get(0).toString()
+                var tocheck = strs.get(0).toString()
                 var thename= "أيام"
                 if(tocheck == "صيام الخميس" || tocheck== "صيام الاثنين" ||tocheck == "صلاة الجمعة علي وقتها") {
 
                     thename = "أسبوع"
                 }
-                mycards.add(HabitsData(strs?.get(0).toString(), R.drawable.red, R.drawable.pink
-                        , R.drawable.coin, strs?.get(1).toString(), strs?.get(2).toString(), strs?.get(3)?.toFloat()!!, true, thename))
+                mycards.add(HabitsData(strs.get(0).toString(), R.drawable.red, R.drawable.pink
+                        , R.drawable.coin, strs.get(1).toString(), strs.get(2).toString(), strs.get(3).toFloat(), true, thename))
             }
         }
         else
         {
-            deleteall_but.visibility = View.INVISIBLE
+            activityEngazatDeleteAllEngazatButton.visibility = View.INVISIBLE
         }
 
-        total.text = totalSum.toString()
+        activityEngazatTotalTv.text = totalSum.toString()
 
 
 
-        engazaty_recycler.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL,false)
-        engazaty_recycler.adapter = MainAdapter(mycards,this,"",total,0f,0,"engazat", progressBar3, total)
+        activityEngazatEngazatyRv.layoutManager = LinearLayoutManager(this,RecyclerView.VERTICAL,false)
+        activityEngazatEngazatyRv.adapter = MainAdapter(mycards,this,"",activityEngazatTotalTv,0f,0,"engazat", activityEngazatProgressBar, activityEngazatTotalTv)
 
 
         val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
-        itemTouchHelper.attachToRecyclerView(engazaty_recycler)
+        itemTouchHelper.attachToRecyclerView(activityEngazatEngazatyRv)
     }
 
 
@@ -112,7 +110,8 @@ class EngazatActivity : AppCompatActivity() {
     val itemTouchHelperCallback = object :ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT)
     {
 
-        override fun onMove(recyclerView: RecyclerView?, viewHolder: RecyclerView.ViewHolder?, target: RecyclerView.ViewHolder?): Boolean {
+
+        override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
             return false
         }
 
@@ -148,8 +147,8 @@ class EngazatActivity : AppCompatActivity() {
 
         val progress: ProgressBar? = null
         val percentage: TextView? = null
-        engazaty_recycler.adapter = MainAdapter(mycards,this,"",total ,0f,0,"engazat", progressBar3, total)
-        deleteall_but.visibility = View.INVISIBLE
+        activityEngazatEngazatyRv.adapter = MainAdapter(mycards,this,"",activityEngazatTotalTv ,0f,0,"engazat", activityEngazatProgressBar, activityEngazatTotalTv)
+        activityEngazatDeleteAllEngazatButton.visibility = View.INVISIBLE
     }
 //
     fun isSubstring(s1: String, s2: String): String
@@ -182,7 +181,7 @@ class EngazatActivity : AppCompatActivity() {
     fun clearElement(viewHolder: MainAdapter.ViewHolder)
     {
 
-        (engazaty_recycler.adapter as MainAdapter).removeItem(viewHolder,"remove_engaz")
+        (activityEngazatEngazatyRv.adapter as MainAdapter).removeItem(viewHolder,"remove_engaz")
     }
 
 
@@ -214,41 +213,41 @@ class EngazatActivity : AppCompatActivity() {
         if(thestring != null)
         {
             if (thestring.length >0)
-                temp = thestring?.substring(0,thestring.length-1)
+                temp = thestring.substring(0,thestring.length-1)
         }
 
-        val valuesinOrder = temp?.split(",")?.toTypedArray()
+        val valuesinOrder = temp.split(",").toTypedArray()
 
         if(m.isNotEmpty())
         {
             for ((k,v) in m)
             {
 
-                val strs = v.split(",")?.toTypedArray()
+                val strs = v.split(",").toTypedArray()
 
 
 
-                var tocheck = strs?.get(0).toString()
+                var tocheck = strs.get(0).toString()
                 var thename= "أيام"
                 if(tocheck == "صيام الخميس" || tocheck== "صيام الاثنين" ||tocheck == "صلاة الجمعة علي وقتها") {
 
                     thename = "أسبوع"
                 }
-                mycart.add(HabitsData(strs?.get(0).toString(), R.drawable.red, R.drawable.pink
-                        , R.drawable.coin, strs?.get(1).toString(), strs?.get(2).toString(), strs?.get(3)?.toFloat()!!, true, thename))
+                mycart.add(HabitsData(strs.get(0).toString(), R.drawable.red, R.drawable.pink
+                        , R.drawable.coin, strs.get(1).toString(), strs.get(2).toString(), strs.get(3).toFloat(), true, thename))
             }
         }
         else
         {
-            deleteall_but.visibility = View.INVISIBLE
+            activityEngazatDeleteAllEngazatButton.visibility = View.INVISIBLE
         }
 
         val progress: ProgressBar? = null
         val percentage: TextView? = null
 
 
-        engazaty_recycler.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL,false)
-        engazaty_recycler.adapter = MainAdapter(mycart,this,"",total,0f,0,"engazat", progressBar3, total)
+        activityEngazatEngazatyRv.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL,false)
+        activityEngazatEngazatyRv.adapter = MainAdapter(mycart,this,"",activityEngazatTotalTv,0f,0,"engazat", activityEngazatProgressBar, activityEngazatTotalTv)
     }
 }
 

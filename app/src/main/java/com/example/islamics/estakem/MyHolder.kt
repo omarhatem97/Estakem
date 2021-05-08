@@ -1,7 +1,7 @@
 package com.example.islamics.estakem
 
 import android.widget.CheckBox
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import com.example.islamics.estakem.ui.adapter.MainAdapter
 import kotlinx.android.synthetic.main.curr_habits.view.*
