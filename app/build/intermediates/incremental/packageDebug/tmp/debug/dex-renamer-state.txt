@@ -1,4 +1,0 @@
-#Wed May 06 20:26:27 EET 2020
-base.0=C\:\\Users\\Omar Hatem\\Desktop\\estakem_copy\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
-path.0=classes.dex
-renamed.0=classes.dex
