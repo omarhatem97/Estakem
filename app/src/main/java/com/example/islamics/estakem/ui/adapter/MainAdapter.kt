@@ -3,8 +3,7 @@ package com.example.islamics.estakem.ui.adapter
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.support.v7.widget.RecyclerView
-
+import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +13,6 @@ import kotlinx.android.synthetic.main.card_frayed.view.fardname
 import kotlinx.android.synthetic.main.card_frayed.view.thickbar
 import kotlinx.android.synthetic.main.card_frayed.view.thinbar
 import kotlinx.android.synthetic.main.curr_habits.view.*
-
 import android.widget.CheckBox
 import com.example.islamics.estakem.ui.data.HabitsData
 import com.example.islamics.estakem.MyApplication
@@ -82,7 +80,7 @@ class MainAdapter (val input: ArrayList<HabitsData>, var ctx: Context, var start
                         Log.d("aywa ana true", MyApplication.checked.toString())
                         holder.numcoins.text = Coinnewvalue.toString()
                         holder.check.isChecked = true
-                        var numdays_separated=data.numdays?.split("/")?.toTypedArray()
+                        var numdays_separated= data.numdays.split("/").toTypedArray()
                         var ratingnew:Float = (Coinnewvalue.toString()+"f").toFloat()/numdays_separated[1].toFloat()
 
                         //step 1
@@ -127,7 +125,7 @@ class MainAdapter (val input: ArrayList<HabitsData>, var ctx: Context, var start
                         var myglobal = MyApplication() // to use global variable
                         holder.numcoins.text = Coinnewvalue.toString()
                         holder.check.isChecked = false
-                        var numdays_separated=data.numdays?.split("/")?.toTypedArray()
+                        var numdays_separated= data.numdays.split("/").toTypedArray()
                         var ratingnew:Float = (Coinnewvalue.toString()+"f").toFloat()/numdays_separated[1].toFloat()
 
                         //step 1
@@ -188,7 +186,7 @@ class MainAdapter (val input: ArrayList<HabitsData>, var ctx: Context, var start
 
             myCheckBox = itemView.check
 
-            myCheckBox?.setOnClickListener(this)
+            myCheckBox.setOnClickListener(this)
         }
 
 
@@ -246,7 +244,7 @@ class MainAdapter (val input: ArrayList<HabitsData>, var ctx: Context, var start
 
 
             Log.d("cardcoin",strs?.get(2).toString()  )
-            Log.d("cardrating",strs?.get(3))
+            //Log.d("cardrating",strs?.get(3))
             //hena 8yart
             editor_engaz.putString(last_num, card.name + "," + strs?.get(2).toString() + "," + diff + "/" +strs?.get(5).toString()+','
                                     + strs?.get(3))
@@ -263,7 +261,7 @@ class MainAdapter (val input: ArrayList<HabitsData>, var ctx: Context, var start
             percentage.text = ((totalrating / (numCards*5)) *100).toInt().toString()
 
             //step 3
-            totalcoins.text = (totalcoins.text.toString().toInt() - strs?.get(2).toInt()).toString()
+            totalcoins.text = (totalcoins.text.toString().toInt() - strs.get(2).toInt()).toString()
 
 
             //step 2 : removing item from the recycler view
@@ -304,7 +302,7 @@ class MainAdapter (val input: ArrayList<HabitsData>, var ctx: Context, var start
             var card  = input[viewHolder.adapterPosition]
             for ((k,v) in m)
             {
-                val strs = v.split(",")?.toTypedArray()
+                val strs = v.split(",").toTypedArray()
 
                 Log.d("tocompare" , card.name+','+card.numofcoins+','+card.numdays+','+card.rating)
                 Log.d("tocomparewith",strs[0]+','+strs[1]+','+strs[2]+','+card.rating)
@@ -345,7 +343,7 @@ class MainAdapter (val input: ArrayList<HabitsData>, var ctx: Context, var start
             percentage.text = ((totalrating / (numCards*5)) *100).toInt().toString()
 
             //step 3
-            totalcoins.text = (totalcoins.text.toString().toInt() - strs?.get(2).toInt()).toString()
+            totalcoins.text = (totalcoins.text.toString().toInt() - strs.get(2).toInt()).toString()
 
 
             //step 2 : removing item from the recycler view
@@ -408,7 +406,7 @@ class MainAdapter (val input: ArrayList<HabitsData>, var ctx: Context, var start
         var m: MutableMap<String, String> = mutableMapOf("Jan" to "01", "Feb" to "02", "Mar" to "03",
                 "Apr" to "04", "May" to "05", "Jun" to "06", "Jul" to "07", "Aug" to "08", "Sep" to "09",
                 "Oct" to "10", "Nov" to "11", "Dec" to "12")
-        var temp = s?.split(" ")?.toTypedArray()
+        var temp = s.split(" ").toTypedArray()
         var res: String = ""
         // Log.d("temp[2]" , temp[2])
         res += temp[2] + " " + m[temp[1]] + " " + temp[temp.size - 1]
