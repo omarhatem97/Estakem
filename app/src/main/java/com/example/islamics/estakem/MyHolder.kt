@@ -1,10 +1,9 @@
 package com.example.islamics.estakem
 
-import android.R
 import android.widget.CheckBox
-import android.widget.TextView
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import com.example.islamics.estakem.ui.adapter.MainAdapter
 import kotlinx.android.synthetic.main.curr_habits.view.*
 
 
@@ -32,7 +31,7 @@ class MyHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClick
         this.ItemclickListener?.onItemClick(v, layoutPosition)
     }
 
-    interface ItemClickListener : mainAdapter.ViewHolder.ItemClickListener {
+    interface ItemClickListener : MainAdapter.ViewHolder.ItemClickListener {
 
         override fun onItemClick(v: View, pos: Int)
     }

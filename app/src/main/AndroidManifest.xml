@@ -12,25 +12,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".mychallenges"></activity>
-        <activity android:name=".engazat" />
-        <activity android:name=".ershadat" />
+        <activity android:name=".ui.MyChallengesActivity"></activity>
+        <activity android:name=".ui.EngazatActivity" />
+        <activity android:name=".ui.ErshadatActivity" />
         <activity
-            android:name=".tarkzanb"
+            android:name=".ui.TarkZanbActivity"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity android:name=".review" />
-        <activity android:name=".sonan_mahgora" />
+        <activity android:name=".ui.ReviewActivity" />
+        <activity android:name=".ui.SonanMahgoraActivity" />
         <activity
-            android:name=".sala"
+            android:name=".ui.SalaActivity"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".farayed" />
+        <activity android:name=".ui.FaraedActivity" />
 
         <receiver android:name=".MyNotificationPublisher" />
     </application>

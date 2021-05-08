@@ -1,4 +1,4 @@
-package com.example.islamics.estakem
+package com.example.islamics.estakem.ui
 
 import android.content.SharedPreferences
 import android.content.res.ColorStateList
@@ -6,9 +6,10 @@ import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.example.islamics.estakem.R
 import kotlinx.android.synthetic.main.activity_review.*
 
-class review : AppCompatActivity() {
+class ReviewActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,7 +59,8 @@ class review : AppCompatActivity() {
 
 
     }
+    fun Float.format(digits: Int) = "%.${digits}f".format(this)
+
 }
 
 
-    fun Float.format(digits: Int) = "%.${digits}f".format(this)

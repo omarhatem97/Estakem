@@ -1,18 +1,16 @@
-package com.example.islamics.estakem
+package com.example.islamics.estakem.ui
 
 import android.content.Intent
 import android.content.SharedPreferences
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.KeyEvent
 import android.view.View
+import com.example.islamics.estakem.R
 import kotlinx.android.synthetic.main.activity_tarkzanb.*
-import android.view.KeyEvent.KEYCODE_BACK
 
 
-
-class tarkzanb : AppCompatActivity() {
+class TarkZanbActivity : AppCompatActivity() {
 
 
 
@@ -76,7 +74,7 @@ class tarkzanb : AppCompatActivity() {
                     editor.commit()
 
 
-                    val intent = Intent(this, mychallenges::class.java)
+                    val intent = Intent(this, MyChallengesActivity::class.java)
                     intent.putExtra("startdate", startdate)
                     startActivity(intent)
 

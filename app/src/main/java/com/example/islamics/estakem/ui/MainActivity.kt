@@ -1,4 +1,4 @@
-package com.example.islamics.estakem
+package com.example.islamics.estakem.ui
 
 import android.app.AlarmManager
 import android.app.NotificationChannel
@@ -16,10 +16,9 @@ import android.support.v7.widget.CardView
 import android.util.Log
 
 
-import android.widget.RelativeLayout
-
-import android.view.View
 import android.widget.GridLayout
+import com.example.islamics.estakem.MyNotificationPublisher
+import com.example.islamics.estakem.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -50,36 +49,36 @@ class MainActivity : AppCompatActivity()
             val container = grid.getChildAt(i) as CardView
             container.setOnClickListener {
                 if(i == 0) {
-                    val intent = Intent(context, mychallenges::class.java)
+                    val intent = Intent(context, MyChallengesActivity::class.java)
                     startActivity(intent)
                 } else if(i == 1) {
-                    val intent = Intent(context, ershadat::class.java)
+                    val intent = Intent(context, ErshadatActivity::class.java)
                     startActivity(intent)
                 } else if(i == 2) {
-                    val intent = Intent(context , farayed::class.java)
+                    val intent = Intent(context , FaraedActivity::class.java)
                     intent.putExtra("name","farayed")
                     startActivity(intent)
                 } else if(i == 3) {
-                    val intent = Intent(context, engazat::class.java)
+                    val intent = Intent(context, EngazatActivity::class.java)
                     startActivity(intent)
                 } else if(i == 4) {
-                    val intent = Intent(context , farayed::class.java)
+                    val intent = Intent(context , FaraedActivity::class.java)
                     intent.putExtra("name","sonan_mahgora")
                     startActivity(intent)
                 } else if(i == 5) {
-                    val intent = Intent(context , farayed::class.java)
+                    val intent = Intent(context , FaraedActivity::class.java)
                     intent.putExtra("name","nwafel")
                     startActivity(intent)
                 } else if(i == 6) {
-                    val intent = Intent(context ,tarkzanb::class.java)
+                    val intent = Intent(context , TarkZanbActivity::class.java)
                     intent.putExtra("mystate","mine")
                     startActivity(intent)
                 } else if(i== 7) {
-                    val intent = Intent(this ,tarkzanb::class.java)
+                    val intent = Intent(this , TarkZanbActivity::class.java)
                     intent.putExtra("mystate","mine")
                     startActivity(intent)
                 } else if(i == 8){
-                    val intent = Intent(context ,tarkzanb::class.java)
+                    val intent = Intent(context , TarkZanbActivity::class.java)
                     intent.putExtra("mystate","znb")
                    startActivity(intent)
                 }

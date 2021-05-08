@@ -1,4 +1,4 @@
-package com.example.islamics.estakem
+package com.example.islamics.estakem.ui
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -13,13 +13,16 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
+import com.example.islamics.estakem.ui.data.HabitsData
+import com.example.islamics.estakem.ui.adapter.MainAdapter
+import com.example.islamics.estakem.MyApplication
+import com.example.islamics.estakem.R
 import kotlinx.android.synthetic.main.activity_engazat.*
-import kotlinx.android.synthetic.main.activity_main.*
 
-class engazat : AppCompatActivity() {
+class EngazatActivity : AppCompatActivity() {
 
     var myshared : SharedPreferences? = null
-    val mycards = ArrayList<dataHabits>() // cards to be shown in homepage
+    val mycards = ArrayList<HabitsData>() // cards to be shown in homepage
     var context:Context = this
     var startdate:String=" "
 
@@ -83,7 +86,7 @@ class engazat : AppCompatActivity() {
 
                     thename = "أسبوع"
                 }
-                mycards.add(dataHabits(strs?.get(0).toString(), R.drawable.red, R.drawable.pink
+                mycards.add(HabitsData(strs?.get(0).toString(), R.drawable.red, R.drawable.pink
                         , R.drawable.coin, strs?.get(1).toString(), strs?.get(2).toString(), strs?.get(3)?.toFloat()!!, true, thename))
             }
         }
@@ -97,7 +100,7 @@ class engazat : AppCompatActivity() {
 
 
         engazaty_recycler.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL,false)
-        engazaty_recycler.adapter = mainAdapter(mycards,this,"",total,0f,0,"engazat", progressBar3, total)
+        engazaty_recycler.adapter = MainAdapter(mycards,this,"",total,0f,0,"engazat", progressBar3, total)
 
 
         val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
@@ -120,7 +123,7 @@ class engazat : AppCompatActivity() {
             builder.setTitle("مسح الانجاز؟")
             builder.setMessage("هل ترغب بمسح هذا الانجاز ؟")
             builder.setPositiveButton("نعم") { dialogInterface, i ->
-                clearElement(viewHolder as mainAdapter.ViewHolder) }
+                clearElement(viewHolder as MainAdapter.ViewHolder) }
             builder.setNegativeButton("لا",{dialogInterface, i -> refresh()})
             builder.show()
 
@@ -141,11 +144,11 @@ class engazat : AppCompatActivity() {
         editor.commit()
         editor1.clear()
         editor1.commit()
-        val mycards = ArrayList<dataHabits>()
+        val mycards = ArrayList<HabitsData>()
 
         val progress: ProgressBar? = null
         val percentage: TextView? = null
-        engazaty_recycler.adapter = mainAdapter(mycards,this,"",total ,0f,0,"engazat", progressBar3, total)
+        engazaty_recycler.adapter = MainAdapter(mycards,this,"",total ,0f,0,"engazat", progressBar3, total)
         deleteall_but.visibility = View.INVISIBLE
     }
 //
@@ -176,10 +179,10 @@ class engazat : AppCompatActivity() {
     }
 
 
-    fun clearElement(viewHolder:mainAdapter.ViewHolder)
+    fun clearElement(viewHolder: MainAdapter.ViewHolder)
     {
 
-        (engazaty_recycler.adapter as mainAdapter).removeItem(viewHolder,"remove_engaz")
+        (engazaty_recycler.adapter as MainAdapter).removeItem(viewHolder,"remove_engaz")
     }
 
 
@@ -190,7 +193,7 @@ class engazat : AppCompatActivity() {
 
     fun refresh()
     {
-        val mycart = ArrayList<dataHabits>()
+        val mycart = ArrayList<HabitsData>()
 
         var databack = getSharedPreferences("shared_engaz", 0)
         var databack1 = getSharedPreferences("keyshared_engaz", 0) // to get back the keys
@@ -203,7 +206,7 @@ class engazat : AppCompatActivity() {
         var keys: MutableMap<String,String> = databack1.all as MutableMap<String, String>
         Log.d("el keys",keys.toString())
 
-        Log.d("checked is ",MyApplication.checked.toString())
+        Log.d("checked is ", MyApplication.checked.toString())
         val thestring :String? = keys["keys"]
         var tempsize = 0
         var temp = ""
@@ -231,7 +234,7 @@ class engazat : AppCompatActivity() {
 
                     thename = "أسبوع"
                 }
-                mycart.add(dataHabits(strs?.get(0).toString(), R.drawable.red, R.drawable.pink
+                mycart.add(HabitsData(strs?.get(0).toString(), R.drawable.red, R.drawable.pink
                         , R.drawable.coin, strs?.get(1).toString(), strs?.get(2).toString(), strs?.get(3)?.toFloat()!!, true, thename))
             }
         }
@@ -245,7 +248,7 @@ class engazat : AppCompatActivity() {
 
 
         engazaty_recycler.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL,false)
-        engazaty_recycler.adapter = mainAdapter(mycart,this,"",total,0f,0,"engazat", progressBar3, total)
+        engazaty_recycler.adapter = MainAdapter(mycart,this,"",total,0f,0,"engazat", progressBar3, total)
     }
 }
 

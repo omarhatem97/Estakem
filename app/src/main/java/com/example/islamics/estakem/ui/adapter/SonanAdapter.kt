@@ -1,4 +1,4 @@
-package com.example.islamics.estakem
+package com.example.islamics.estakem.ui.adapter
 
 import android.content.Intent
 import android.support.v7.widget.RecyclerView
@@ -7,13 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import kotlinx.android.synthetic.main.card_frayed.view.*
+import com.example.islamics.estakem.ui.data.FaraedData
+import com.example.islamics.estakem.R
+import com.example.islamics.estakem.ui.SalaActivity
 import kotlinx.android.synthetic.main.card_frayed.view.iconpic
 import kotlinx.android.synthetic.main.card_frayed.view.thickbar
 import kotlinx.android.synthetic.main.card_frayed.view.thinbar
 import kotlinx.android.synthetic.main.card_sonan_mahgora.view.*
 
-class customAdapter_sonan (val input: ArrayList<data_farayed>) : RecyclerView.Adapter<customAdapter_sonan.ViewHolder>()
+class SonanAdapter (val input: ArrayList<FaraedData>) : RecyclerView.Adapter<SonanAdapter.ViewHolder>()
 {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v=LayoutInflater.from(parent.context).inflate(R.layout.card_sonan_mahgora,parent,false)
@@ -26,7 +28,7 @@ class customAdapter_sonan (val input: ArrayList<data_farayed>) : RecyclerView.Ad
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val data :data_farayed = input[position]
+        val data : FaraedData = input[position]
         holder.Thickbar.setImageResource(data.thickbar)
         holder.Thinbar.setImageResource(data.thinbar)
         holder.iconpic.setImageResource(data.iconimg)
@@ -35,11 +37,11 @@ class customAdapter_sonan (val input: ArrayList<data_farayed>) : RecyclerView.Ad
 
     }
 
-    class ViewHolder (itemview : View, var myitemdata:data_farayed?=null) : RecyclerView.ViewHolder(itemview) {
+    class ViewHolder (itemview : View, var myitemdata: FaraedData?=null) : RecyclerView.ViewHolder(itemview) {
 
         init {
             itemview.setOnClickListener {
-                val intent = Intent(itemview.context , sala::class.java)
+                val intent = Intent(itemview.context , SalaActivity::class.java)
                 intent.putExtra("sona_name" , myitemdata?.name)
                 itemview.context.startActivity(intent)
             }

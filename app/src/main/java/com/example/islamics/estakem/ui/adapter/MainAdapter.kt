@@ -1,10 +1,8 @@
-package com.example.islamics.estakem
+package com.example.islamics.estakem.ui.adapter
 
-import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.preference.PreferenceManager
 import android.support.v7.widget.RecyclerView
 
 import android.util.Log
@@ -18,13 +16,17 @@ import kotlinx.android.synthetic.main.card_frayed.view.thinbar
 import kotlinx.android.synthetic.main.curr_habits.view.*
 
 import android.widget.CheckBox
-import org.w3c.dom.Text
+import com.example.islamics.estakem.ui.data.HabitsData
+import com.example.islamics.estakem.MyApplication
+import com.example.islamics.estakem.MyHolder
+import com.example.islamics.estakem.R
+import com.example.islamics.estakem.ui.ReviewActivity
 import java.text.SimpleDateFormat
 
 
-class mainAdapter (val input: ArrayList<dataHabits>,var ctx: Context,var startdate:String , var totalcoins: TextView
-                    , var totalrating:Float , var numCards:Int, var activityname:String
-                    ,var progress:ProgressBar , var percentage:TextView) : RecyclerView.Adapter<mainAdapter.ViewHolder>()
+class MainAdapter (val input: ArrayList<HabitsData>, var ctx: Context, var startdate:String, var totalcoins: TextView
+                   , var totalrating:Float, var numCards:Int, var activityname:String
+                   , var progress:ProgressBar, var percentage:TextView) : RecyclerView.Adapter<MainAdapter.ViewHolder>()
 {
 
     var prefrences =this.ctx.getSharedPreferences("shared",0)
@@ -32,7 +34,7 @@ class mainAdapter (val input: ArrayList<dataHabits>,var ctx: Context,var startda
 
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): mainAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v=LayoutInflater.from(parent.context).inflate(R.layout.curr_habits,parent,false)
 
         return ViewHolder(v)
@@ -44,7 +46,7 @@ class mainAdapter (val input: ArrayList<dataHabits>,var ctx: Context,var startda
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         //myshared?.getString("بر الوالدين","شششششش")
-        val data :dataHabits = input[position]
+        val data : HabitsData = input[position]
         holder.Thickbar.setImageResource(data.thickbar)
         holder.Thinbar.setImageResource(data.thinbar)
         holder.name.text = data.name
@@ -77,7 +79,7 @@ class mainAdapter (val input: ArrayList<dataHabits>,var ctx: Context,var startda
                         var Coinnewvalue:Int = holder.numcoins.text.toString().toInt() + 5
                         //var myglobal = MyApplication() // to use global variable
                         MyApplication.checked = 1
-                        Log.d("aywa ana true",MyApplication.checked.toString())
+                        Log.d("aywa ana true", MyApplication.checked.toString())
                         holder.numcoins.text = Coinnewvalue.toString()
                         holder.check.isChecked = true
                         var numdays_separated=data.numdays?.split("/")?.toTypedArray()
@@ -155,10 +157,10 @@ class mainAdapter (val input: ArrayList<dataHabits>,var ctx: Context,var startda
 
     }
 
-    class ViewHolder (itemview : View,var myitemdata:dataHabits?=null) : RecyclerView.ViewHolder(itemview), View.OnClickListener {
+    class ViewHolder (itemview : View,var myitemdata: HabitsData?=null) : RecyclerView.ViewHolder(itemview), View.OnClickListener {
         init {
             itemview.setOnClickListener {
-                val intent = Intent(itemview.context , review::class.java)
+                val intent = Intent(itemview.context , ReviewActivity::class.java)
                 intent.putExtra("fareda_name" , myitemdata?.name)
                 intent.putExtra("fareda_numdays" , numdays.text.toString())
                 intent.putExtra("fareda_numofcoins" , numcoins.text.toString())
@@ -179,7 +181,7 @@ class mainAdapter (val input: ArrayList<dataHabits>,var ctx: Context,var startda
 
         var myCheckBox: CheckBox
 
-        var ItemclickListener:ItemClickListener?= null
+        var ItemclickListener: ItemClickListener?= null
 
         init {
 

@@ -1,4 +1,4 @@
-package com.example.islamics.estakem
+package com.example.islamics.estakem.ui
 
 import android.app.AlarmManager
 import android.app.NotificationChannel
@@ -19,18 +19,19 @@ import android.support.v7.widget.helper.ItemTouchHelper
 import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
-import kotlinx.android.synthetic.main.activity_engazat.*
+import com.example.islamics.estakem.*
+import com.example.islamics.estakem.ui.adapter.MainAdapter
+import com.example.islamics.estakem.ui.data.HabitsData
 import kotlinx.android.synthetic.main.activity_engazat.deleteall_but
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_mychallenges.*
 
 
 import java.text.SimpleDateFormat
 
-class mychallenges : AppCompatActivity() {
+class MyChallengesActivity : AppCompatActivity() {
 
     var myshared: SharedPreferences? = null
-    val mycards = ArrayList<dataHabits>() // cards to be shown in homepage
+    val mycards = ArrayList<HabitsData>() // cards to be shown in homepage
     var context: Context = this
     var startdate: String = " "
 
@@ -271,7 +272,7 @@ class mychallenges : AppCompatActivity() {
                 if (k == "صيام الخميس" || k == "صيام الاثنين" || k == "صلاة الجمعة علي وقتها")
                     thename = "أسبوع"
 
-                mycards.add(dataHabits(strs?.get(0).toString(), R.drawable.red, R.drawable.pink
+                mycards.add(HabitsData(strs?.get(0).toString(), R.drawable.red, R.drawable.pink
                         , R.drawable.coin, strs?.get(2).toString(), diff.toString() + "/" + strs?.get(5).toString()
                         , rating, habda.toBoolean(), thename))
                 // }
@@ -292,7 +293,7 @@ class mychallenges : AppCompatActivity() {
         percentage.text = progress.toString()
 
         hs1_recycler.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
-        hs1_recycler.adapter = mainAdapter(mycards, this, startdate,total2 ,totalrating, totalnum, "mychallenges",progressBar2,percentage)
+        hs1_recycler.adapter = MainAdapter(mycards, this, startdate,total2 ,totalrating, totalnum, "mychallenges",progressBar2,percentage)
 
         val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
         itemTouchHelper.attachToRecyclerView(hs1_recycler)
@@ -316,9 +317,9 @@ class mychallenges : AppCompatActivity() {
             val builder = AlertDialog.Builder(context)
             builder.setTitle("مسح التحدي؟")
             builder.setMessage("هل ترغب بمسح هذا التحدي ؟")
-            builder.setPositiveButton("نعم", { dialogInterface, i -> clearElement(viewHolder as mainAdapter.ViewHolder,"") })
+            builder.setPositiveButton("نعم", { dialogInterface, i -> clearElement(viewHolder as MainAdapter.ViewHolder,"") })
             builder.setNegativeButton("لا", { dialogInterface, i -> refresh() })
-            builder.setNeutralButton("إضافة إلي انجازاتي", { dialogInterface, i -> clearElement(viewHolder as mainAdapter.ViewHolder,"addengaz") })
+            builder.setNeutralButton("إضافة إلي انجازاتي", { dialogInterface, i -> clearElement(viewHolder as MainAdapter.ViewHolder,"addengaz") })
             builder.show()
 
 
@@ -337,7 +338,7 @@ class mychallenges : AppCompatActivity() {
 
     /********************************************************************************/
 //To add the card in engaz activity and remove it from the home screen
-    private fun add_engaz(viewHolder: mainAdapter.ViewHolder) {
+    private fun add_engaz(viewHolder: MainAdapter.ViewHolder) {
 
         /***********************Frist we need to save the state to shared preferences*******/
         //saveSharedpref()
@@ -542,8 +543,8 @@ class mychallenges : AppCompatActivity() {
         MyApplication.globalvar = null
         MyApplication.keyname = ""
 
-        val mycards = ArrayList<dataHabits>()
-        hs1_recycler.adapter = mainAdapter(mycards, this, "",total2 , 0f ,0, "mychallenges",progressBar2,percentage)
+        val mycards = ArrayList<HabitsData>()
+        hs1_recycler.adapter = MainAdapter(mycards, this, "",total2 , 0f ,0, "mychallenges",progressBar2,percentage)
 
         //make button and text invisible
 
@@ -554,7 +555,7 @@ class mychallenges : AppCompatActivity() {
     }
 
 
-    fun clearElement(viewHolder: mainAdapter.ViewHolder , name:String)
+    fun clearElement(viewHolder: MainAdapter.ViewHolder, name:String)
     {
 
 
@@ -581,12 +582,12 @@ class mychallenges : AppCompatActivity() {
         editor1.commit()
         // Log.d("editor1",editor1.toString())
         //end some 3ak
-        (hs1_recycler.adapter as mainAdapter).removeItem(viewHolder , name)
+        (hs1_recycler.adapter as MainAdapter).removeItem(viewHolder , name)
         //reload()
     }
 
     fun refresh() {
-        val mycard_refresh = ArrayList<dataHabits>()
+        val mycard_refresh = ArrayList<HabitsData>()
 
 
         // newDay_remove_check()
@@ -657,7 +658,7 @@ class mychallenges : AppCompatActivity() {
                 if (k == "صيام الخميس" || k == "صيام الاثنين" || k == "صلاة الجمعة علي وقتها")
                     thename = "أسبوع"
 
-                mycard_refresh.add(dataHabits(strs?.get(0).toString(), R.drawable.red, R.drawable.pink
+                mycard_refresh.add(HabitsData(strs?.get(0).toString(), R.drawable.red, R.drawable.pink
                         , R.drawable.coin, strs?.get(2).toString(), diff.toString() + "/" + strs?.get(5).toString()
                         , rating, habda.toBoolean(), thename))
                 // }
@@ -674,7 +675,7 @@ class mychallenges : AppCompatActivity() {
 
         hs1_recycler.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
 
-        hs1_recycler.adapter = mainAdapter(mycard_refresh, this, startdate , total2 ,totalrating, totalnum!!, "mychallenges",progressBar2,percentage)
+        hs1_recycler.adapter = MainAdapter(mycard_refresh, this, startdate , total2 ,totalrating, totalnum!!, "mychallenges",progressBar2,percentage)
     }
 
     //to remove a substring from given string
@@ -912,7 +913,7 @@ class mychallenges : AppCompatActivity() {
                 if (k == "صيام الخميس" || k == "صيام الاثنين" || k == "صلاة الجمعة علي وقتها")
                     thename = "أسبوع"
 
-                mycards.add(dataHabits(strs?.get(0).toString(), R.drawable.red, R.drawable.pink
+                mycards.add(HabitsData(strs?.get(0).toString(), R.drawable.red, R.drawable.pink
                         , R.drawable.coin, strs?.get(2).toString(), diff.toString() + "/" + strs?.get(5).toString()
                         , rating, habda.toBoolean(), thename))
                 // }
@@ -933,7 +934,7 @@ class mychallenges : AppCompatActivity() {
         newDay_remove_check()
 
         var startdate: String = " "
-        var mycart = arrayListOf<dataHabits>()
+        var mycart = arrayListOf<HabitsData>()
 
         //habd new
         myshared = getSharedPreferences("shared", 0)
@@ -1014,7 +1015,7 @@ class mychallenges : AppCompatActivity() {
                 if (k == "صيام الخميس" || k == "صيام الاثنين" || k == "صلاة الجمعة علي وقتها")
                     thename = "أسبوع"
 
-                mycart.add(dataHabits(strs?.get(0).toString(), R.drawable.red, R.drawable.pink
+                mycart.add(HabitsData(strs?.get(0).toString(), R.drawable.red, R.drawable.pink
                         , R.drawable.coin, strs?.get(2).toString(), diff.toString() + "/" + strs?.get(5).toString()
                         , rating, habda.toBoolean(), thename))
                 // }
@@ -1034,7 +1035,7 @@ class mychallenges : AppCompatActivity() {
         progressBar2.progress = progress
         percentage.text = progress.toString()
         hs1_recycler.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
-        hs1_recycler.adapter = mainAdapter(mycart, this, startdate,total2,totalrating , totalnum , "mychallenges",progressBar2,percentage)
+        hs1_recycler.adapter = MainAdapter(mycart, this, startdate,total2,totalrating , totalnum , "mychallenges",progressBar2,percentage)
     }
 
 
