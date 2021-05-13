@@ -112,12 +112,15 @@
             android:padding="8dp"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
+            android:background="#77000000"
             android:text="@string/activity_ertekab_zanb"
-            android:textColor="#680E0E"
+            android:textColor="#ffffff"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/activityTarkZanbStartButton"
             android:textColorHighlight="@android:color/background_dark"
             android:textSize="18sp" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

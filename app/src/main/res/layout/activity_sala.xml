@@ -81,13 +81,15 @@
             android:padding="8dp"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
+            android:background="#77000000"
             app:layout_constraintTop_toBottomOf="@+id/activityTarkZanbActivityName"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="32dp"
             android:text='السنن الرواتب تعريف السنن الرواتب هي السنن التي داوم النبيُّ عليه الصلاة والسلام عليها، ودلّ على ذلك إخبارُه بها، أو فعلُها، منها سنةُ الظهر، وسنةُ المغرب، والعشاء، وأخيراً الفجر، بالإضافة إلى سنة الجمعة، وسُمِّيت بالرواتب لمواظبة النبي عليه الصلاة والسلام عليها، وهي سنة مؤكدة، كصلاة الوتر، وصلاة الضحى، ويبلغ عدد هذه السنن اثنتي عشرة ركعة، وهي  أربعُ ركعات قبل الظهر بتسليمتين، واثنتان بعد الظهر. ركعتان من بعد صلاة المغرب. ركعتان بعد صلاة العشاء. ركعتان من قبل صلاة الفجر قال رسول الله  . "ركعتا الفجر خير من الدنيا وما فيها"  وتقول عائشة رضى الله عنها: «لم يكنِ النبيُّ صلَّى اللهُ عليه وسلَّم، على شيءٍ من النوافِلِ، أشدَّ منه تعاهُدًا على ركعتَيِ الفجرِ  عن عائشة رضي الله عنها قالت : " كان النبي    يصلي في بيتي قبلَ الظهرِ أربعًا . ثم يخرج فيصلي بالناسِ . ثم يدخل فيصلي ركعتَين . وكان يصلي بالناس المغربَ . ثم يدخل فيصلي ركعتَين . ويصلي بالناس العشاءَ . ويدخل بيتي فيصلي ركعتَين"'
-            android:textColor="#680E0E"
+            android:textColor="#ffffff"
             android:textColorHighlight="@android:color/background_dark"
             android:textSize="18sp" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

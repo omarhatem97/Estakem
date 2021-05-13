@@ -17,6 +17,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="32dp"
+            android:visibility="gone"
             android:layout_weight="1.3">
 
             <TextView
@@ -294,7 +295,7 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/red" />
+                        android:src="@drawable/prayer_color" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -335,7 +336,7 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/red" />
+                        android:src="@drawable/mine" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -376,7 +377,7 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/red" />
+                        android:src="@drawable/cry" />
 
                     <TextView
                         android:layout_width="wrap_content"
