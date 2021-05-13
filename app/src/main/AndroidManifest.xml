@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.islamics.estakem">
 
-    <application
-        android:name=".MyApplication"
-        android:allowBackup="true"
-        android:hardwareAccelerated="false"
-        android:icon="@mipmap/ic_launcher_round"
-        android:label="@string/app_name"
-        android:largeHeap="true"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".mychallenges"></activity>
-        <activity android:name=".engazat" />
-        <activity android:name=".ershadat" />
-        <activity
-            android:name=".tarkzanb"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity android:name=".review" />
-        <activity android:name=".sonan_mahgora" />
-        <activity
-            android:name=".sala"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<application
+      android:name=".MyApplication"
+      android:hardwareAccelerated="false"
+      android:icon="@mipmap/ic_launcher_round"
+      android:label="@string/app_name"
+      android:largeHeap="true"
+      android:roundIcon="@mipmap/ic_launcher_round"
+      android:supportsRtl="true"
+      android:theme="@style/AppTheme">
+    <activity android:name=".ui.MyChallengesActivity" />
+    <activity android:name=".ui.EngazatActivity" />
+    <activity android:name=".ui.ErshadatActivity" />
+    <activity
+        android:name=".ui.TarkZanbActivity"
+        android:windowSoftInputMode="stateAlwaysHidden" />
+    <activity android:name=".ui.ReviewActivity" />
+    <activity android:name=".ui.SonanMahgoraActivity" />
+    <activity
+        android:name=".ui.SalaActivity"
+        android:windowSoftInputMode="stateAlwaysHidden" />
+    <activity android:name=".ui.MainActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".farayed" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+    <activity android:name=".ui.FaraedActivity" />
 
-        <receiver android:name=".MyNotificationPublisher" />
-    </application>
+    <receiver android:name=".MyNotificationPublisher" />
+  </application>
 
 </manifest>

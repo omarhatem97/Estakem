@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/zambname"
@@ -7,38 +7,42 @@
     android:layout_height="match_parent"
     android:background="@drawable/stars">
 
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <TextView
-        android:id="@+id/name_text"
+        android:id="@+id/activityTarkZanbActivityName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="52dp"
         android:layout_marginEnd="16dp"
-        android:text="ادخل اسم المهمة"
+        android:text="@string/activity_tark_zanb_activity_name_tv"
         android:textColor="@android:color/background_light"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/aya_" />
+        app:layout_constraintTop_toBottomOf="@+id/activityTarkZanbAyaBifaldillah" />
 
     <TextView
-        android:id="@+id/days_text"
+        android:id="@+id/activityTarkZanbZanbDaysNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="16dp"
-        android:text="ادخل عدد الايام"
+        android:text="@string/activity_tark_zanb_activity_days_tv"
         android:textColor="@android:color/background_light"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name_text" />
+        app:layout_constraintTop_toBottomOf="@+id/activityTarkZanbActivityName" />
 
     <TextView
-        android:id="@+id/aya_"
+        android:id="@+id/activityTarkZanbAyaBifaldillah"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -46,30 +50,30 @@
         android:fontFamily="@font/lalezar_fegular"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
-        android:text="قُلْ يَا عِبَادِيَ الَّذِينَ أَسْرَفُوا عَلَىٰ أَنفُسِهِمْ لَا تَقْنَطُوا مِن رَّحْمَةِ اللَّهِ ۚ إِنَّ اللَّهَ يَغْفِرُ الذُّنُوبَ جَمِيعًا ۚ إِنَّهُ هُوَ الْغَفُورُ الرَّحِيمُ "
+        android:text="@string/activity_tark_zanb_aya_bifadlillah_tv"
         android:textAlignment="center"
         android:textColor="@android:color/background_light"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/name_text"
+        app:layout_constraintBottom_toTopOf="@+id/activityTarkZanbActivityName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/START"
+        android:id="@+id/activityTarkZanbStartButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@color/colorPrimary"
-        android:text="ابدأ"
+        android:text="@string/activity_tark_zanb_start_activity_bt_tv"
         android:textColor="@android:color/background_light"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/daysnum" />
+        app:layout_constraintTop_toBottomOf="@+id/activityTarkZanbActivityDaysNumEt" />
 
     <EditText
-        android:id="@+id/zanbname"
+        android:id="@+id/activityTarkZanbZanbName"
         android:backgroundTint="@color/colorAccent"
         android:layout_width="137dp"
         android:layout_height="45dp"
@@ -79,13 +83,13 @@
         android:padding="8dp"
         android:textColor="@android:color/background_light"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/name_text"
-        app:layout_constraintEnd_toStartOf="@+id/name_text"
-        app:layout_constraintTop_toTopOf="@+id/name_text"
+        app:layout_constraintBottom_toBottomOf="@+id/activityTarkZanbActivityName"
+        app:layout_constraintEnd_toStartOf="@+id/activityTarkZanbActivityName"
+        app:layout_constraintTop_toTopOf="@+id/activityTarkZanbActivityName"
         app:layout_constraintVertical_bias="0.666" />
 
     <EditText
-        android:id="@+id/daysnum"
+        android:id="@+id/activityTarkZanbActivityDaysNumEt"
         android:backgroundTint="@color/colorAccent"
         android:layout_width="137dp"
         android:layout_height="37dp"
@@ -95,36 +99,28 @@
         android:padding="8dp"
         android:textColor="@android:color/background_light"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/zanbname"
+        app:layout_constraintEnd_toEndOf="@+id/activityTarkZanbZanbName"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/zanbname"
-        app:layout_constraintTop_toBottomOf="@+id/zanbname" />
+        app:layout_constraintStart_toStartOf="@+id/activityTarkZanbZanbName"
+        app:layout_constraintTop_toBottomOf="@+id/activityTarkZanbZanbName" />
 
-    <ScrollView
-        android:id="@+id/scroll"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="#eeffffff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/START">
 
         <TextView
-            android:id="@+id/def"
+            android:id="@+id/activityTarkZanbScrollViewText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
-            android:text='إن وقوع الإنسان في الذنوب أمر لا مفر منه، وهذه ليست مشكلة في حد ذاتها إنما المشكلة والمصيبة هي الاستمرار في الخطأ والإصرار على المعاصي، قال الغزاليّ: "اعلم أنّ الصّغيرة تكبر بأسباب فيها الإصرار والمواظبة: وكذلك قيل: لا صغيرة مع إصرار، ولا كبيرة مع استغفار"، فكيف إذا كان الإصرار على الكبائر وعدم التوبة منها؟! وقد وعد الله المستغفرين التائبين بالمغفرة والثواب العظيم فقال: { {وَالَّذِينَ إِذَا فَعَلُواْ فَاحِشَةً أَوْ ظَلَمُواْ أَنْفُسَهُمْ ذَكَرُواْ اللّهَ فَاسْتَغْفَرُواْ لِذُنُوبِهِمْ وَمَن يَغْفِرُ الذُّنُوبَ إِلاَّ اللّهُ وَلَمْ يُصِرُّواْ عَلَى مَا فَعَلُواْ وَهُمْ يَعْلَمُونَ * أُولَئِكَ جَزَاؤُهُمْ مَغْفِرَةٌ مِنْ رَبِّهِمْ وَجَنَّاتٌ تَجْرِي مِنْ تَحْتِهَا الْأَنْهَارُ خَالِدِينَ فِيهَا وَنِعْمَ أَجْرُ الْعَامِلِينَ}  }[آل عمران: 135-136]. وجاء في الحديث عن أبي هريرة رضي الله عنه أن النبي صلى الله عليه وسلم قال: (وَالَّذِي نَفْسِي بِيَدِهِ لَوْ لَمْ تُذْنِبُوا لَذَهَبَ اللَّهُ بِكُمْ وَلَجَاءَ بِقَوْمٍ يُذْنِبُونَ فَيَسْتَغْفِرُونَ اللَّهَ فَيَغْفِرُ لَهُمْ). وقد وضح النبي صلى الله عليه وسلم أن كل الناس يخطئون وأن خيرهم من يتوب إلى الله ويرجع إليه كلما حصل منه خطأ، كما في حديث أنس رضي الله عنه أن النبي صلى الله عليه وسلم قال: (كل بني آدم خطاء وخير الخطائين التوابون)، وليس المقصود من هذا أن الإنسان يقحم نفسه في الخطأ إقحاماً ويرتكب المنكرات ثم يقول: كلنا أصحاب خطأ وسنتوب! فيسوِّف هذا المسكين في التوبة وربما اخترمه الموت وهو على حاله السيئ! عياذا بالله. ففرق بين من هو غريق في الذنوب لغفلة ولطغيان ثم يفيق منها ويستغفر، وفرق بين من يصر على الذنوب والمعاصي وهو يعلم حرمتها وهو مع ذلك يتساهل في الاستمرار عليها، ولا يعجل بالتوبة. ولهذا جاء في الآية السابقة قول الله تعالى: {و {لم يصروا} } فجمع بين أمرين مهمين هنا وهما: سرعة الإفاقة من الذنب وسرعة الاستغفار قبل فوات الأوان، ويدل عليه الإتيان بالفاء (فاستغفروا) وهي تفيد الترتيب والتعقيب، يعني حصول الاستغفار مباشرة عقب الذنب، فلم يحصل من الشخص تمادٍ وإصرار، الأمر الثاني: قوله: (ولم يصروا) أي تابوا سريعاً ولم يتمادوا في الذنب. والإصرار على الصغائر من غير توبة أمر خطير قد يوصلها إلى كبائر الذنوب، فكيف بالإصرار على الكبائر؟ ولهذا جاء عن ابن عباس أنه قال: لا كبيرة مع استغفار، ولا صغيرة مع إصرار.  والله سبحانه يحب العبد التواب الأوَّاب الرجَّاع إليه في كل حين كما في قوله تعالى: {.. {إِنَّ اللّهَ يُحِبُّ التَّوَّابِينَ وَيُحِبُّ الْمُتَطَهِّرِينَ} }[البقرة: 222]. بل إن الله يفرح بتوبة العبد ورجوعه إليه واعترافه بذنبه، كما جاء في حديث أنس بن مالك رضي الله عنه أن النبي صلى الله عليه وسلم قال: ((لَلَّهُ أَشَدُّ فَرَحًا بِتَوْبَةِ عَبْدِهِ حِينَ يَتُوبُ إِلَيْهِ مِنْ أَحَدِكُمْ كَانَ عَلَى رَاحِلَتِهِ بِأَرْضِ فَلَاةٍ فَانْفَلَتَتْ مِنْهُ وَعَلَيْهَا طَعَامُهُ وَشَرَابُهُ فَأَيِسَ مِنْهَا فَأَتَى شَجَرَةً فَاضْطَجَعَ فِي ظِلِّهَا قَدْ أَيِسَ مِنْ رَاحِلَتِهِ فَبَيْنَا هُوَ كَذَلِكَ إِذَا هُوَ بِهَا قَائِمَةً عِنْدَهُ فَأَخَذَ بِخِطَامِهَا ثُمَّ قَالَ مِنْ شِدَّةِ الْفَرَحِ: اللَّهُمَّ أَنْتَ عَبْدِي وَأَنَا رَبُّكَ! أَخْطَأَ مِنْ شِدَّةِ الْفَرَحِ))'
-            android:textColor="#680E0E"
+            android:background="#77000000"
+            android:text="@string/activity_ertekab_zanb"
+            android:textColor="#ffffff"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activityTarkZanbStartButton"
             android:textColorHighlight="@android:color/background_dark"
             android:textSize="18sp" />
-    </ScrollView>
 
-</android.support.constraint.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

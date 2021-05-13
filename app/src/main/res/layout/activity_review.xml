@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/stars"
-    tools:context=".review">
+    tools:context=".ui.ReviewActivity">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <TextView
         android:id="@+id/name"
         android:layout_width="373dp"
@@ -22,7 +25,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <android.support.constraint.Guideline
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -37,7 +40,6 @@
         android:layout_marginTop="20dp"
         android:progress="80"
         android:progressDrawable="@drawable/style_progressbar"
-
         app:layout_constraintBottom_toTopOf="@+id/textView8"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="0.423"
@@ -115,14 +117,14 @@
         android:text="TextView"
         android:textColor="#00E676"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/total"
-        app:layout_constraintEnd_toStartOf="@+id/total"
+        app:layout_constraintBottom_toBottomOf="@+id/activityEngazatTotalTv"
+        app:layout_constraintEnd_toStartOf="@+id/activityEngazatTotalTv"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@+id/total" />
+        app:layout_constraintTop_toTopOf="@+id/activityEngazatTotalTv" />
 
     <TextView
-        android:id="@+id/total"
+        android:id="@+id/activityEngazatTotalTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -147,19 +149,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
-    <ScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tkyem"
-        app:layout_constraintVertical_bias="0.053">
+
 
         <TextView
             android:id="@+id/review"
@@ -180,8 +170,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tkyem"
-            app:layout_constraintVertical_bias="0.13999999" />
-    </ScrollView>
-
-</android.support.constraint.ConstraintLayout>
+            app:layout_constraintTop_toBottomOf="@+id/tkyem"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
